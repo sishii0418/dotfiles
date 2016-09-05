@@ -84,59 +84,44 @@ noremap <S-h> ^
 noremap <S-l> $
 
 
-" --------- "
-" NeoBundle "
-" --------- "
+" -------- "
+" dein.vim "
+" -------- "
 
-" install
-" curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh
-" sh ./install.sh
-" rm -rf install.sh
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-
-
-if 0 | endif
-
-	filetype off
-
-if has('vim_starting')
-	if &compatible
-		set nocompatible
-	endif
-
-	set runtimepath+=~/.vim/bundle/neobundle.vim
+if &compatible
+  set nocompatible
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+if !isdirectory(s:dein_repo_dir)
+  execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
+endif
 
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc', {
-	\'build' : {
-		\'unix' : 'make -f make_unix.mak',
-	\},
-\}
+execute 'set runtimepath^=' . s:dein_repo_dir
 
-" -------------------------------------
+call dein#begin(s:dein_dir)
 
-NeoBundle 'plasticboy/vim-markdown'
-NeoBundle 'kannokanno/previm'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'itchyny/lightline.vim'
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('plasticboy/vim-markdown')
+call dein#add('kannokanno/previm')
+call dein#add('tyru/open-browser.vim')
+call dein#add('tomtom/tcomment_vim')
+call dein#add('bronson/vim-trailing-whitespace')
+call dein#add('itchyny/lightline.vim')
 
-" -------------------------------------
+call dein#end()
 
-call neobundle#end()
+if dein#check_install()
+  call dein#install()
+endif
 
 filetype plugin indent on
-filetype indent on
-syntax on
 
-NeoBundleCheck
-
-" for lightline.vim
+" lightline.vim 用
 set laststatus=2
 let g:lightline = {
-	\ 'colorscheme': 'solarized'
-	\}
+    \ 'colorscheme': 'solarized'
+    \ }
