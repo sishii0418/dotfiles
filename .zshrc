@@ -7,18 +7,20 @@ export LANG=ja_JP.UTF-8
 # 自動補完
 autoload -Uz compinit; compinit
 
-# "..." "...." で上のディレクトリへ移動
-alias ...='cd ../..'
-alias ....='cd ../../..'
+# aliases
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g G "| grep"
 
-# 削除するか確認
 alias rm='rm -i'
-
-# 上書き確認
 alias mv='mv -i'
-
-# 中間層のディレクトリも作成
 alias mkdir='mkdir -p'
+
+alias pacupg="sudo pacman -Syu"
+alias pacdl="pacman -Sw"
+alias pacin="sudo pacman -S"
+alias pacins="sudo pacman -U"
+alias pacrem="sudo pacman -Rns"
 
 # コマンドのスペルミスを指摘
 setopt correct
@@ -39,16 +41,17 @@ setopt auto_cd
 setopt auto_list
 setopt nonomatch
 
-# dnf を pacman 風に操作
-alias dnfin='sudo dnf install'
-alias dnfupg='sudo dnf upgrade'
-alias dnfrm='sudo dnf remove'
-alias dnfse='sudo dnf search'
+# 補完時,8ビットを通す
+setopt print_eight_bit
 
 # suffix alias
 function runcpp(){ g++ -O2 $1; ./a.out }
 alias -s {c,cpp}=runcpp
 
+# 隠しファイルをマッチ
+setopt globdots
+
+# 圧縮ファイルを指定して展開
 function extract() {
   case $1 in
     *.tar.gz|*.tgz) tar xzvf $1;;
@@ -67,23 +70,23 @@ function extract() {
 alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 # 色
-	autoload colors
-	colors
+autoload colors
+colors
 
-	export LSCOLORS=gxfxcxdxbxexexaxaxaxax
-	export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;46'
-	zstyle ':completion:*' list-colors 'di=32'
+export LSCOLORS=gxfxcxdxbxexexaxaxaxax
+export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;46'
+zstyle ':completion:*' list-colors 'di=32'
 
-	case "${OSTYPE}" in
-	linux*)
-		alias ls='ls -F --color'
-		;;
-	esac
+case "${OSTYPE}" in
+linux*)
+	alias ls='ls -F --color'
+	;;
+esac
 
 # tmux 自動起動
-	if [ -z $TMUX ]; then
-		tmux -2
-	fi
+if [ -z $TMUX ]; then
+	tmux -2
+fi
 
 # プロンプト
 PROMPT="%(?.%{${fg[green]}%}.%{${fg[red]}%})%B%n%b%# "
