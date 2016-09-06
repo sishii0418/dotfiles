@@ -12,6 +12,7 @@ alias -g ...='../..'
 alias -g ....='../../..'
 alias -g G='| grep'
 
+alias ls='ls -G'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
@@ -19,10 +20,34 @@ alias mkdir='mkdir -p'
 alias vi='vim'
 
 alias pacupg="sudo pacman -Syu"
-alias pacdl="pacman -Sw"
 alias pacin="sudo pacman -S"
 alias pacins="sudo pacman -U"
 alias pacrem="sudo pacman -Rns"
+alias pacrepos="pacman -Ss"
+
+alias yaoin="yaourt -S"
+alias yaodl="yaourt -G"
+alias yaorepos="yaourt -Ss"
+
+function extract() {
+  case $1 in
+    *.tar.gz|*.tgz) tar xzvf $1;;
+    *.tar.xz) tar Jxvf $1;;
+    *.zip) unzip $1;;
+    *.lzh) lha e $1;;
+    *.tar.bz2|*.tbz) tar xjvf $1;;
+    *.tar.Z) tar zxvf $1;;
+    *.gz) gzip -d $1;;
+    *.bz2) bzip2 -dc $1;;
+    *.Z) uncompress $1;;
+    *.tar) tar xvf $1;;
+    *.arj) unarj $1;;
+  esac
+}
+alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
+
+function runcpp(){ g++ -O2 $1; ./a.out }
+alias -s {c,cpp}=runcpp
 
 # コマンドのスペルミスを指摘
 setopt correct
@@ -46,30 +71,8 @@ setopt nonomatch
 # 補完時,8ビットを通す
 setopt print_eight_bit
 
-# suffix alias
-function runcpp(){ g++ -O2 $1; ./a.out }
-alias -s {c,cpp}=runcpp
-
 # 隠しファイルをマッチ
 setopt globdots
-
-# 圧縮ファイルを指定して展開
-function extract() {
-  case $1 in
-    *.tar.gz|*.tgz) tar xzvf $1;;
-    *.tar.xz) tar Jxvf $1;;
-    *.zip) unzip $1;;
-    *.lzh) lha e $1;;
-    *.tar.bz2|*.tbz) tar xjvf $1;;
-    *.tar.Z) tar zxvf $1;;
-    *.gz) gzip -d $1;;
-    *.bz2) bzip2 -dc $1;;
-    *.Z) uncompress $1;;
-    *.tar) tar xvf $1;;
-    *.arj) unarj $1;;
-  esac
-}
-alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 # 色
 autoload colors
