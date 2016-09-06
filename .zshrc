@@ -7,14 +7,16 @@ export LANG=ja_JP.UTF-8
 # 自動補完
 autoload -Uz compinit; compinit
 
-# aliases
+# alias
 alias -g ...='../..'
 alias -g ....='../../..'
-alias -g G "| grep"
+alias -g G='| grep'
 
 alias rm='rm -i'
 alias mv='mv -i'
+alias cp='cp -i'
 alias mkdir='mkdir -p'
+alias vi='vim'
 
 alias pacupg="sudo pacman -Syu"
 alias pacdl="pacman -Sw"
