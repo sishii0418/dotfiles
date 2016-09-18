@@ -12,7 +12,7 @@ set expandtab
 
 " Makefile ではインデントを空白にしない
 let _curfile=expand("%:r")
-if _curfile == 'Makefile'
+if _curfile == 'Makefile' | 'makefile'
     set noexpandtab
 endif
 
@@ -79,9 +79,20 @@ inoremap <C-\> <End>
 
 " キーバインド
 noremap ; :
-noremap <C-u> :make<Enter>
 noremap <S-h> ^
 noremap <S-l> $
+
+" window navigation
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+
+" make
+noremap <C-u> :make<Enter>
+noremap <C-e> :make run<Enter>
+noremap <C-S-e> :w<Enter> :make<Enter> :make run<Enter> :make clean<Enter>
+noremap <C-t> :make clean<Enter>
 
 
 " -------- "
@@ -92,11 +103,11 @@ let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if &compatible
-  set nocompatible
+    set nocompatible
 endif
 
 if !isdirectory(s:dein_repo_dir)
-  execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
+    execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
 endif
 
 execute 'set runtimepath^=' . s:dein_repo_dir
@@ -115,16 +126,11 @@ call dein#add('itchyny/lightline.vim')
 call dein#end()
 
 if dein#check_install()
-  call dein#install()
+    call dein#install()
 endif
 
 filetype plugin indent on
 
-" lightline.vim 用
-set laststatus=2
-let g:lightline = {
-    \ 'colorscheme': 'solarized'
-    \ }
 
 " neocomplete
 " Disable AutoComplPop.
@@ -158,9 +164,9 @@ inoremap <expr><C-l>     neocomplete#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
+    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+    " For no inserting <CR> key.
+    "return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -188,7 +194,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+    let g:neocomplete#sources#omni#input_patterns = {}
 endif
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
@@ -197,3 +203,10 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+" lightline.vim
+set laststatus=2
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ }
