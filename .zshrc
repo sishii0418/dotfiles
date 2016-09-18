@@ -29,6 +29,9 @@ alias yaoin="yaourt -S"
 alias yaodl="yaourt -G"
 alias yaorepos="yaourt -Ss"
 
+alias sysstr="sudo systemctl start"
+alias sysenb="sudo systemctl enable"
+
 function extract() {
   case $1 in
     *.tar.gz|*.tgz) tar xzvf $1;;
