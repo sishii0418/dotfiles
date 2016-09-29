@@ -12,7 +12,7 @@ set expandtab
 
 " Makefile ではインデントを空白にしない
 let _curfile=expand("%:r")
-if _curfile == 'Makefile' | 'makefile'
+if _curfile == 'Makefile'
     set noexpandtab
 endif
 
@@ -91,7 +91,6 @@ nnoremap <C-h> <C-w>h
 " make
 noremap <C-u> :make<Enter>
 noremap <C-e> :make run<Enter>
-noremap <C-S-e> :w<Enter> :make<Enter> :make run<Enter> :make clean<Enter>
 noremap <C-t> :make clean<Enter>
 
 
@@ -116,9 +115,11 @@ call dein#begin(s:dein_dir)
 
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/neocomplete.vim')
-call dein#add('plasticboy/vim-markdown')
+call dein#add('Shougo/neoinclude.vim')
+call dein#add('tpope/vim-markdown')
 call dein#add('kannokanno/previm')
 call dein#add('tyru/open-browser.vim')
+call dein#add('tyru/caw.vim')
 call dein#add('tomtom/tcomment_vim')
 call dein#add('bronson/vim-trailing-whitespace')
 call dein#add('itchyny/lightline.vim')
@@ -132,7 +133,7 @@ endif
 filetype plugin indent on
 
 
-" neocomplete
+" neocomplete--------------------------------------------------------------------------------------
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
@@ -142,7 +143,8 @@ let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
+" 補完に時間がかかってもスキップしない
+let g:neocomplete#skip_auto_completion_time = ""
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
@@ -156,9 +158,9 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
+" " Plugin key-mappings.
+" inoremap <expr><C-g>     neocomplete#undo_completion()
+" inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -171,8 +173,8 @@ endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
@@ -193,16 +195,22 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
+if !exists('g:neocomplete#force_omni_input_patterns')
+        let g:neocomplete#force_omni_input_patterns = {}
 endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+let g:neocomplete#force_overwrite_completefunc = 1
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+" " For perlomni.vim setting.
+" " https://github.com/c9s/perlomni.vim
+" let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+" if !exists('g:neocomplete#force_omni_input_patterns')
+"     let g:neocomplete#force_omni_input_patterns = {}
+" endif
+" let g:neocomplete#force_overwrite_completefunc = 1
+" --------------------------------------------------------------------------------------------------
 
 
 " lightline.vim
@@ -210,3 +218,7 @@ set laststatus=2
 let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ }
+
+
+" vim-markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
