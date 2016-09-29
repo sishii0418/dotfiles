@@ -14,20 +14,22 @@ alias -g G='| grep'
 
 alias ls='ls -G'
 alias rm='rm -i'
+alias rm -r='rm -r -f'
 alias mv='mv -i'
 alias cp='cp -i'
 alias mkdir='mkdir -p'
-alias vi='vim'
 
 alias pacupg="sudo pacman -Syu"
 alias pacin="sudo pacman -S"
 alias pacins="sudo pacman -U"
 alias pacrem="sudo pacman -Rns"
-alias pacrepos="pacman -Ss"
+alias pacrep="pacman -Si"
+alias pacreps="pacman -Ss"
 
 alias yaoin="yaourt -S"
 alias yaodl="yaourt -G"
-alias yaorepos="yaourt -Ss"
+alias yaorep="yaourt -Si"
+alias yaoreps="yaourt -Ss"
 
 alias sysstr="sudo systemctl start"
 alias sysenb="sudo systemctl enable"
