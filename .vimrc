@@ -98,39 +98,43 @@ noremap <C-t> :make clean<Enter>
 " dein.vim "
 " -------- "
 
+" プラグインのインストール場所
 let s:dein_dir = expand('~/.cache/dein')
+" dein.vim 本体
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-if &compatible
-    set nocompatible
+" dein.vim がなければ github から落としてくる
+if &runtimepath !~# '/dein.vim'
+    if !isdirectory(s:dein_repo_dir)
+        execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+    endif
+    execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
-if !isdirectory(s:dein_repo_dir)
-    execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
+" 設定開始
+if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
+
+    call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+
+    " プラグインリストを収めた TOML ファイルの場所
+    let g:rc_dir    = expand('~/.vim/rc')
+    let s:toml      = g:rc_dir . '/dein.toml'
+    let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
+
+    " TOML を読み込み、キャッシュ
+    call dein#load_toml(s:toml,      {'lazy': 0})
+    call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+    " 設定終了
+    call dein#end()
+    call dein#save_state()
 endif
 
-execute 'set runtimepath^=' . s:dein_repo_dir
-
-call dein#begin(s:dein_dir)
-
-call dein#add('Shougo/dein.vim')
-call dein#add('Shougo/neocomplete.vim')
-call dein#add('Shougo/neoinclude.vim')
-call dein#add('tpope/vim-markdown')
-call dein#add('kannokanno/previm')
-call dein#add('tyru/open-browser.vim')
-call dein#add('tyru/caw.vim')
-call dein#add('tomtom/tcomment_vim')
-call dein#add('bronson/vim-trailing-whitespace')
-call dein#add('itchyny/lightline.vim')
-
-call dein#end()
-
+" 自動インストール
 if dein#check_install()
     call dein#install()
 endif
-
-filetype plugin indent on
 
 
 " neocomplete--------------------------------------------------------------------------------------
@@ -219,6 +223,10 @@ let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ }
 
-
 " vim-markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" indentLine
+let g:indentLine_color_term = 111
+let g:indentLine_color_gui = '#708090'
+let g:indentLine_char = '¦'
