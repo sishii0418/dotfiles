@@ -28,6 +28,7 @@ set ruler
 " 入力中のコマンドを表示
 set showcmd
 
+" 色付け
 syntax on
 
 " vi 互換を使わない
