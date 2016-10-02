@@ -13,8 +13,6 @@ alias -g ....='../../..'
 alias -g G='| grep'
 
 alias ls='ls -G'
-alias rm='rm -i'
-alias rm -r='rm -r -f'
 alias mv='mv -i'
 alias cp='cp -i'
 alias mkdir='mkdir -p'
