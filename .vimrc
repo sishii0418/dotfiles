@@ -63,6 +63,9 @@ set smartcase
 " 検索結果をハイライト
 set hlsearch
 
+" 補完強化
+set wildmenu
+
 " .md ファイルをハイライト適用
 au BufRead,BufNewFile *.md set filetype=markdown
 
@@ -112,31 +115,32 @@ if &runtimepath !~# '/dein.vim'
     execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
-" 設定開始
-if dein#load_state(s:dein_dir)
-    call dein#begin(s:dein_dir)
+call dein#begin(expand('~/.cache/dein'))
 
-    call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+call dein#add('Shougo/neocomplete.vim')
+call dein#add('Shougo/neoinclude.vim')
+call dein#add('tpope/vim-markdown')
+call dein#add('kannokanno/previm')
+call dein#add('tyru/open-browser.vim')
+call dein#add('tyru/caw.vim')
+call dein#add('tomtom/tcomment_vim')
+call dein#add('bronson/vim-trailing-whitespace')
+call dein#add('itchyny/lightline.vim')
+call dein#add('Yggdroot/indentLine')
+call dein#add('airblade/vim-gitgutter')
+call dein#add('thinca/vim-quickrun')
+call dein#add('lervag/vimtex')
 
-    " プラグインリストを収めた TOML ファイルの場所
-    let g:rc_dir    = expand('~/.vim/rc')
-    let s:toml      = g:rc_dir . '/dein.toml'
-    let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
-
-    " TOML を読み込み、キャッシュ
-    call dein#load_toml(s:toml,      {'lazy': 0})
-    call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-    " 設定終了
-    call dein#end()
-    call dein#save_state()
-endif
+call dein#end()
 
 " 自動インストール
 if dein#check_install()
     call dein#install()
 endif
 
+filetype plugin indent on
 
 " neocomplete--------------------------------------------------------------------------------------
 " Disable AutoComplPop.
@@ -231,3 +235,21 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:indentLine_color_term = 111
 let g:indentLine_color_gui = '#708090'
 let g:indentLine_char = '¦'
+
+" quickrun.vim
+let g:quickrun_config = {
+\   "_" :{
+\         "runner" : "vimproc",
+\         "runner/vimproc/updatetime" : 60
+\         },
+\   "tex" : {
+\       'command' : 'latexmk',
+\       "outputter/buffer/split" : ":botright 8sp",
+\       'outputter/error/error' : 'quickfix',
+\       'hook/cd/directory': '%S:h',
+\       'exec': '%c %s'
+\   },
+\}
+
+" tex の conceal を無効化
+let g:tex_conceal=''
