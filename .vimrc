@@ -55,6 +55,9 @@ set matchtime=3
 " 折り返し
 set wrap
 
+" 80文字目に縦線
+set colorcolumn=80
+
 " 補完時
 set infercase
 set ignorecase
@@ -62,6 +65,9 @@ set smartcase
 
 " 検索結果をハイライト
 set hlsearch
+
+" インクリメンタルサーチ
+set incsearch
 
 " 補完強化
 set wildmenu
@@ -81,10 +87,20 @@ inoremap <C-l> <Right>
 inoremap <C-0> <Home>
 inoremap <C-\> <End>
 
-" キーバインド
+" 便利
 noremap ; :
 noremap <S-h> ^
 noremap <S-l> $
+
+" Shift + 矢印でウィンドウサイズを変更
+nnoremap <S-Left>  <C-w><<CR>
+nnoremap <S-Right> <C-w>><CR>
+nnoremap <S-Up>    <C-w>-<CR>
+nnoremap <S-Down>  <C-w>+<CR>
+
+" Tab で対応の括弧にジャンプ
+nnoremap <Tab> %
+vnoremap <Tab> %
 
 " window navigation
 nnoremap <C-j> <C-w>j
@@ -117,20 +133,31 @@ endif
 
 call dein#begin(expand('~/.cache/dein'))
 
+" パッケージ管理
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+" 補完
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neoinclude.vim')
+" Unite.vim
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/neomru.vim')
+" Markdown
 call dein#add('tpope/vim-markdown')
 call dein#add('kannokanno/previm')
 call dein#add('tyru/open-browser.vim')
 call dein#add('tyru/caw.vim')
+" comment
 call dein#add('tomtom/tcomment_vim')
+" fix whitespace
 call dein#add('bronson/vim-trailing-whitespace')
+" Interfaces
 call dein#add('itchyny/lightline.vim')
+" Indent を可視化
 call dein#add('Yggdroot/indentLine')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('thinca/vim-quickrun')
+" TeX
 call dein#add('lervag/vimtex')
 
 call dein#end()
@@ -222,7 +249,7 @@ let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\
 " --------------------------------------------------------------------------------------------------
 
 
-" lightline.vim
+" gightline.vim
 set laststatus=2
 let g:lightline = {
     \ 'colorscheme': 'wombat',
@@ -230,11 +257,15 @@ let g:lightline = {
 
 " vim-markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" conceal を無効化
+let g:markdown_syntax_conceal = 0
+
 
 " indentLine
 let g:indentLine_color_term = 111
 let g:indentLine_color_gui = '#708090'
 let g:indentLine_char = '¦'
+
 
 " quickrun.vim
 let g:quickrun_config = {
@@ -251,5 +282,29 @@ let g:quickrun_config = {
 \   },
 \}
 
+
 " tex の conceal を無効化
 let g:tex_conceal=''
+
+
+" unite.vim
+
+" insert モードで開始する
+let g:unite_enable_start_insert=1
+" enable history/yank function
+let g:unite_source_history_yank_enable = 1
+" Prefix key
+nmap <Space> [unite]
+
+" カレントディレクトリを表示
+nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" register
+nnoremap <silent> [unite]r :<C-u>Unite register<CR>
+" unite.vimを開いている間のキーマッピング
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()"{{{
+    " ESCでuniteを終了
+    nmap <buffer> <ESC> <Plug>(unite_exit)
+	" insert モードのときjjでノーマルモードに移動
+	imap <buffer> jj <Plug>(unite_insert_leave)
+endfunction"}}}
