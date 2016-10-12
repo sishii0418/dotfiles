@@ -1,8 +1,11 @@
 # ~/.zshrc zsh シェルの設定
 
 
-# 環境変数
+# 言語設定
 export LANG=ja_JP.UTF-8
+
+# neovim のファイル置き場
+export XDG_CONFIG_HOME=~/.config
 
 # 自動補完
 autoload -Uz compinit; compinit
