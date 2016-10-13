@@ -55,9 +55,6 @@ set matchtime=3
 " 折り返し
 set wrap
 
-" 80文字目に縦線
-set colorcolumn=80
-
 " 補完時
 set infercase
 set ignorecase
