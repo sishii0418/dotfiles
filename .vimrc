@@ -110,6 +110,29 @@ noremap <C-u> :make<Enter>
 noremap <C-e> :make run<Enter>
 noremap <C-t> :make clean<Enter>
 
+" Python 用
+if version < 600
+  syntax clear
+elseif exists('b:current_after_syntax')
+  finish
+endif
+
+" We need nocompatible mode in order to continue lines with backslashes.
+" Original setting will be restored.
+let s:cpo_save = &cpo
+set cpo&vim
+
+syn match pythonOperator "\(+\|=\|-\|\^\|\*\)"
+syn match pythonDelimiter "\(,\|\.\|:\)"
+syn keyword pythonSpecialWord self
+
+hi link pythonSpecialWord    Special
+hi link pythonDelimiter      Special
+
+let b:current_after_syntax = 'python'
+
+let &cpo = s:cpo_save
+unlet s:cpo_save
 
 " -------- "
 " dein.vim "
@@ -139,6 +162,9 @@ call dein#add('Shougo/neoinclude.vim')
 " Unite.vim
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
+" Snipet
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
 " Markdown
 call dein#add('tpope/vim-markdown')
 call dein#add('kannokanno/previm')
@@ -244,6 +270,25 @@ let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\
 " endif
 " let g:neocomplete#force_overwrite_completefunc = 1
 " --------------------------------------------------------------------------------------------------
+
+" Snippet
+" Plugin key-mappings.
+imap <C-,>     <Plug>(neosnippet_expand_or_jump)
+smap <C-,>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-,>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
 
 
 " gightline.vim
