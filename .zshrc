@@ -1,8 +1,8 @@
 # ~/.zshrc zsh シェルの設定
 
 
-# 言語設定
-export LANG=ja_JP.UTF-8
+# Language setting
+export LANG=en_US.UTF-8
 
 # neovim のファイル置き場
 export XDG_CONFIG_HOME=~/.config
