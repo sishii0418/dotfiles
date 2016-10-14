@@ -73,8 +73,8 @@ set wildmenu
 au BufRead,BufNewFile *.md set filetype=markdown
 
 " jj で挿入モードから抜ける
-inoremap jj <Esc>
-inoremap JJ <Esc>
+inoremap jj <Esc><Right>
+inoremap JJ <Esc><Right>
 
 " 挿入モードで移動
 inoremap <C-h> <Left>
