@@ -291,10 +291,13 @@ if has('conceal')
 endif
 
 
-" gightline.vim
+" lightline.vim
 set laststatus=2
 let g:lightline = {
     \ 'colorscheme': 'wombat',
+    \ }
+let g:lightline.component = {
+    \ 'lineinfo': '%3l[%L]:%-2v'
     \ }
 
 " vim-markdown
