@@ -2,7 +2,7 @@
 " vim settings ~/.vimrc "
 " --------------------- "
 
-" インデント
+" indent 
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -72,6 +72,10 @@ set wildmenu
 " .md ファイルをハイライト適用
 au BufRead,BufNewFile *.md set filetype=markdown
 
+" ------- "
+" Keymaps "
+" ------- "
+
 " jj で挿入モードから抜ける
 inoremap jj <Esc><Right>
 inoremap JJ <Esc><Right>
@@ -110,29 +114,9 @@ noremap <C-u> :make<Enter>
 noremap <C-e> :make run<Enter>
 noremap <C-t> :make clean<Enter>
 
-" Python 用
-if version < 600
-  syntax clear
-elseif exists('b:current_after_syntax')
-  finish
-endif
+" ハイライト解除
+nnoremap <F3> :noh<CR>
 
-" We need nocompatible mode in order to continue lines with backslashes.
-" Original setting will be restored.
-let s:cpo_save = &cpo
-set cpo&vim
-
-syn match pythonOperator "\(+\|=\|-\|\^\|\*\)"
-syn match pythonDelimiter "\(,\|\.\|:\)"
-syn keyword pythonSpecialWord self
-
-hi link pythonSpecialWord    Special
-hi link pythonDelimiter      Special
-
-let b:current_after_syntax = 'python'
-
-let &cpo = s:cpo_save
-unlet s:cpo_save
 
 " -------- "
 " dein.vim "
@@ -155,7 +139,9 @@ call dein#begin(expand('~/.cache/dein'))
 
 " パッケージ管理
 call dein#add('Shougo/dein.vim')
+
 call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+
 " 補完
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('Shougo/neoinclude.vim')
@@ -169,17 +155,18 @@ call dein#add('Shougo/neosnippet-snippets')
 call dein#add('tpope/vim-markdown')
 call dein#add('kannokanno/previm')
 call dein#add('tyru/open-browser.vim')
-call dein#add('tyru/caw.vim')
 " comment
-call dein#add('tomtom/tcomment_vim')
+call dein#add('tyru/caw.vim')
 " fix whitespace
 call dein#add('bronson/vim-trailing-whitespace')
 " Interfaces
 call dein#add('itchyny/lightline.vim')
 " Indent を可視化
 call dein#add('Yggdroot/indentLine')
+
 call dein#add('airblade/vim-gitgutter')
 call dein#add('thinca/vim-quickrun')
+
 " TeX
 call dein#add('lervag/vimtex')
 
