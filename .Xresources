@@ -6,6 +6,7 @@
 ! fonts
 urxvt.font:				xft:Ricty:size=12:antialias=true
 urxvt.allow_bold:		true
+urxvt.letterSpace:      -1
 
 ! scrollbar
 urxvt*scrollBar:		false
@@ -19,6 +20,10 @@ urxvt.perl-ext:			xim-onthespot
 ! set login shell
 urxvt*loginshell:		true
 
+! open links
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
 
 ! ----- !
 ! Color !
