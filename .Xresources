@@ -1,0 +1,60 @@
+! -------------------------- !
+! urxvt settings ~/.Xdefault !
+! -------------------------- !
+
+
+! fonts
+urxvt.font:				xft:Ricty:size=12:antialias=true
+urxvt.allow_bold:		true
+
+! scrollbar
+urxvt*scrollBar:		false
+
+! IME
+urxvt.perl-ext-common:	...,xim-onthespot,...
+urxvt.inputMethod:		fcitx
+urxvt.preeditType:		OnTheSpot
+urxvt.perl-ext:			xim-onthespot
+
+! set login shell
+urxvt*loginshell:		true
+
+
+! ----- !
+! Color !
+! ----- !
+
+! ColorTheme = solarized
+! Source = https://github.com/altercation/solarized
+
+urxvt*background:		#002b36
+urxvt*foreground:		#657b83
+urxvt*fadeColor:		#002b36
+urxvt*cursorColor:		#93a1a1
+urxvt*ColorBackground:	#586e75
+urxvt*ColorForeground:	#93a1a1
+
+! black
+urxvt*color0:			#073642
+urxvt*color8:			#002b36
+! red
+urxvt*color1:			#dc322f
+urxvt*color9:			#cb4b16
+! green
+urxvt*color2:			#859900
+urxvt*color10:			#586e75
+! yellow
+urxvt*color3:			#b58900
+urxvt*color11:			#657b83
+! blue
+urxvt*color4:			#268bd2
+urxvt*color12:			#839496
+! magenta
+urxvt*color5:			#d33682
+urxvt*color13:			#6c71c4
+! cyan
+urxvt*color6:			#2aa198
+urxvt*color14:			#93a1a1
+! white
+urxvt*color7:			#eee8d5
+urxvt*color15:			#fdf6e3
