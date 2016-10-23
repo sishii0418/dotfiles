@@ -1,20 +1,32 @@
-" --------------------- "
-" vim settings ~/.vimrc "
-" --------------------- "
+" ------------ "
+" vim settings "
+" ~/.vimrc     "
+" ------------ "
 
-" indent 
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+"" 雑多
+"{{{
+
+" indent
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 set smartindent
 set expandtab
+
+" conceal を無効化
+let g:markdown_syntax_conceal = 0
+let g:tex_conceal=''
+let g:haskell_conceal=0
 
 " Makefile ではインデントを空白にしない
 let _curfile=expand("%:r")
 if _curfile == 'Makefile'
     set noexpandtab
 endif
+
+" 折りたたみ
+set foldmethod=marker
 
 " 行番号
 set number
@@ -72,9 +84,12 @@ set wildmenu
 " .md ファイルをハイライト適用
 au BufRead,BufNewFile *.md set filetype=markdown
 
-" ------- "
-" Keymaps "
-" ------- "
+" stack のパス
+let $PATH = $PATH . ':' . expand('~/.local/bin')
+"}}}
+
+"" Keymaps
+"{{{
 
 " jj で挿入モードから抜ける
 inoremap jj <Esc><Right>
@@ -115,12 +130,11 @@ noremap <C-e> :make run<Enter>
 noremap <C-t> :make clean<Enter>
 
 " ハイライト解除
-nnoremap <F3> :noh<CR>
+nnoremap <C-/> :noh<CR>
+"}}}
 
-
-" -------- "
-" dein.vim "
-" -------- "
+"" dein.vim
+"{{{
 
 " プラグインのインストール場所
 let s:dein_dir = expand('~/.cache/dein')
@@ -163,12 +177,22 @@ call dein#add('bronson/vim-trailing-whitespace')
 call dein#add('itchyny/lightline.vim')
 " Indent を可視化
 call dein#add('Yggdroot/indentLine')
-
+" 変更行を可視化
 call dein#add('airblade/vim-gitgutter')
+" Quickrun
 call dein#add('thinca/vim-quickrun')
-
 " TeX
 call dein#add('lervag/vimtex')
+" Haskell
+call dein#add('kana/vim-filetype-haskell')
+call dein#add('eagletmt/ghcmod-vim')
+call dein#add('ujihisa/neco-ghc')
+call dein#add('dag/vim2hs')
+" Syntax-check
+call dein#add('osyo-manga/shabadou.vim')
+call dein#add('osyo-manga/vim-watchdogs')
+" エラー箇所をハイライト
+call dein#add('jceb/vim-hier')
 
 call dein#end()
 
@@ -178,15 +202,18 @@ if dein#check_install()
 endif
 
 filetype plugin indent on
+"}}}
 
-" neocomplete--------------------------------------------------------------------------------------
-" Disable AutoComplPop.
+"" neocomplete
+"{{{
+
+" Disable AutoComplPop
 let g:acp_enableAtStartup = 0
-" Use neocomplete.
+" Use neocomplete
 let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
+" Use smartcase
 let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
+" Set minimum syntax keyword length
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " 補完に時間がかかってもスキップしない
@@ -198,49 +225,49 @@ let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'scheme' : $HOME.'/.gosh_completions'
         \ }
 
-" Define keyword.
+" Define keyword
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" " Plugin key-mappings.
+" " Plugin key-mappings
 " inoremap <expr><C-g>     neocomplete#undo_completion()
 " inoremap <expr><C-l>     neocomplete#complete_common_string()
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
+" Recommended key-mappings
+" <CR>: close popup and save indent
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
     return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
     " For no inserting <CR> key.
     "return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
-" <TAB>: completion.
+" <TAB>: completion
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
+" <C-h>, <BS>: close popup and delete backword char
 " inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
+" Close popup by <Space>
 "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
-" AutoComplPop like behavior.
+" AutoComplPop like behavior
 "let g:neocomplete#enable_auto_select = 1
 
-" Shell like behavior(not recommended).
+" Shell like behavior(not recommended)
 "set completeopt+=longest
 "let g:neocomplete#enable_auto_select = 1
 "let g:neocomplete#disable_auto_complete = 1
 "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
-" Enable omni completion.
+" Enable omni completion
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" Enable heavy omni completion.
+" Enable heavy omni completion
 if !exists('g:neocomplete#force_omni_input_patterns')
         let g:neocomplete#force_omni_input_patterns = {}
 endif
@@ -249,17 +276,17 @@ let g:neocomplete#force_overwrite_completefunc = 1
 "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplete#force_omni_input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-" " For perlomni.vim setting.
+" " For perlomni.vim setting
 " " https://github.com/c9s/perlomni.vim
 " let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " if !exists('g:neocomplete#force_omni_input_patterns')
 "     let g:neocomplete#force_omni_input_patterns = {}
 " endif
 " let g:neocomplete#force_overwrite_completefunc = 1
-" --------------------------------------------------------------------------------------------------
+"}}}
 
-" Snippet
-" Plugin key-mappings.
+"" Snippet
+" Plugin key-mappings
 imap <C-,>     <Plug>(neosnippet_expand_or_jump)
 smap <C-,>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-,>     <Plug>(neosnippet_expand_target)
@@ -278,7 +305,7 @@ if has('conceal')
 endif
 
 
-" lightline.vim
+"" lightline.vim
 set laststatus=2
 let g:lightline = {
 \   'colorscheme': 'wombat',
@@ -286,10 +313,9 @@ let g:lightline = {
 let g:lightline.component = {
     \ 'lineinfo': '%3l[%L]:%-2v'}
 
+
 " vim-markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-" conceal を無効化
-let g:markdown_syntax_conceal = 0
 
 
 " indentLine
@@ -298,7 +324,8 @@ let g:indentLine_color_gui = '#708090'
 let g:indentLine_char = '¦'
 
 
-" quickrun.vim
+"" quickrun.vim
+"{{{
 let g:quickrun_config = {
 \   "_" :{
 \         "runner" : "vimproc",
@@ -311,14 +338,30 @@ let g:quickrun_config = {
 \       'hook/cd/directory': '%S:h',
 \       'exec': '%c %s'
 \   },
+\   "watchdogs_checker/_" : {
+\       "hook/copen/enable_exist_data" : 1,
+\   },
+\   "watchdogs_checker/ghc-mod" : {
+\       "command" : "ghc-mod",
+\       "exec" : '%c %o --hlintOpt="--language=XmlSyntax" check %s:p',
+\   },
 \}
+" vim-watchdogs を呼び出し
+call watchdogs#setup(g:quickrun_config)
+"}}}
 
 
-" tex の conceal を無効化
-let g:tex_conceal=''
+"" vim-watchdogs
+"{{{
+" 関数に設定を渡す
+call watchdogs#setup(g:quickrun_config)
+" 書込後にシンタックスチェックする
+let g:watchdogs_check_BufWritePost_enable = 1
+"}}}
 
 
-" unite.vim
+"" unite.vim
+"{{{
 
 " insert モードで開始する
 let g:unite_enable_start_insert=1
@@ -333,9 +376,10 @@ nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> [unite]r :<C-u>Unite register<CR>
 " unite.vimを開いている間のキーマッピング
 autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()"{{{
+function! s:unite_my_settings()
     " ESCでuniteを終了
     nmap <buffer> <ESC> <Plug>(unite_exit)
 	" insert モードのときjjでノーマルモードに移動
 	imap <buffer> jj <Plug>(unite_insert_leave)
-endfunction"}}}
+endfunction
+"}}}
