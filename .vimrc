@@ -22,7 +22,7 @@ let g:haskell_conceal=0
 " Makefile ではインデントを空白にしない
 let _curfile=expand("%:r")
 if _curfile == 'Makefile'
-    set noexpandtab
+  set noexpandtab
 endif
 
 " 折りたたみ
@@ -143,10 +143,10 @@ let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 " dein.vim がなければ github から落としてくる
 if &runtimepath !~# '/dein.vim'
-    if !isdirectory(s:dein_repo_dir)
-        execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-    endif
-    execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+  if !isdirectory(s:dein_repo_dir)
+    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+  endif
+  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
 call dein#begin(expand('~/.cache/dein'))
@@ -198,7 +198,7 @@ call dein#end()
 
 " 自動インストール
 if dein#check_install()
-    call dein#install()
+  call dein#install()
 endif
 
 filetype plugin indent on
@@ -220,14 +220,14 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplete#skip_auto_completion_time = ""
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+\ 'default' : '',
+\ 'vimshell' : $HOME.'/.vimshell_hist',
+\ 'scheme' : $HOME.'/.gosh_completions'
+\ }
 
 " Define keyword
 if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
+  let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
@@ -239,9 +239,9 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 " <CR>: close popup and save indent
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-    return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-    " For no inserting <CR> key.
-    "return pumvisible() ? "\<C-y>" : "\<CR>"
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 " <TAB>: completion
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -269,7 +269,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion
 if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns = {}
+  let g:neocomplete#force_omni_input_patterns = {}
 endif
 
 let g:neocomplete#force_overwrite_completefunc = 1
@@ -280,7 +280,7 @@ let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\
 " " https://github.com/c9s/perlomni.vim
 " let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " if !exists('g:neocomplete#force_omni_input_patterns')
-"     let g:neocomplete#force_omni_input_patterns = {}
+"   let g:neocomplete#force_omni_input_patterns = {}
 " endif
 " let g:neocomplete#force_overwrite_completefunc = 1
 "}}}
@@ -327,24 +327,29 @@ let g:indentLine_char = '¦'
 "" quickrun.vim
 "{{{
 let g:quickrun_config = {
-\   "_" :{
-\         "runner" : "vimproc",
-\         "runner/vimproc/updatetime" : 60
-\         },
-\   "tex" : {
-\       'command' : 'latexmk',
-\       "outputter/buffer/split" : ":botright 8sp",
-\       'outputter/error/error' : 'quickfix',
-\       'hook/cd/directory': '%S:h',
-\       'exec': '%c %s'
-\   },
-\   "watchdogs_checker/_" : {
-\       "hook/copen/enable_exist_data" : 1,
-\   },
-\   "watchdogs_checker/ghc-mod" : {
-\       "command" : "ghc-mod",
-\       "exec" : '%c %o --hlintOpt="--language=XmlSyntax" check %s:p',
-\   },
+\ "_" :{
+\   "runner" : "vimproc",
+\   "runner/vimproc/updatetime" : 60,
+\   "outputter/buffer/split" : ":botright",
+\   "outputter/buffer/close_on_empty" : 1
+\ },
+\ "tex" : {
+\   'command' : 'latexmk',
+\   "outputter/buffer/split" : ":botright 8sp",
+\   'outputter/error/error' : 'quickfix',
+\   'hook/cd/directory': '%S:h',
+\   'exec': '%c %s'
+\ },
+\ "watchdogs_checker/_" : {
+\   "hook/copen/enable_exist_data" : 1,
+\ },
+\ "watchdogs_checker/ghc-mod" : {
+\   "command" : "ghc-mod",
+\   "exec" : '%c %o --hlintOpt="--language=XmlSyntax" check %s:p',
+\ },
+\ "haskell/watchdogs_checker" : {
+\   "type" : "watchdogs_checker/ghc-mod"
+\ },
 \}
 " vim-watchdogs を呼び出し
 call watchdogs#setup(g:quickrun_config)
@@ -377,8 +382,8 @@ nnoremap <silent> [unite]r :<C-u>Unite register<CR>
 " unite.vimを開いている間のキーマッピング
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
-    " ESCでuniteを終了
-    nmap <buffer> <ESC> <Plug>(unite_exit)
+  " ESCでuniteを終了
+  nmap <buffer> <ESC> <Plug>(unite_exit)
 	" insert モードのときjjでノーマルモードに移動
 	imap <buffer> jj <Plug>(unite_insert_leave)
 endfunction
