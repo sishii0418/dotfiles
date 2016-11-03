@@ -29,37 +29,52 @@ URxvt.matcher.button: 1
 ! Color !
 ! ----- !
 
-! ColorTheme = solarized
-! Source = https://github.com/altercation/solarized
+#define S_base03        #1c1c1c
+#define S_base02        #262626
+#define S_base01        #4e4e4e
+#define S_base00        #585858
+#define S_base0         #808080
+#define S_base1         #8a8a8a
+#define S_base2         #d7d7af
+#define S_base3         #ffffd7
 
-urxvt*background:		#002b36
-urxvt*foreground:		#657b83
-urxvt*fadeColor:		#002b36
-urxvt*cursorColor:		#93a1a1
-urxvt*ColorBackground:	#586e75
-urxvt*ColorForeground:	#93a1a1
+#define S_yellow        #af8700
+#define S_orange        #d75f00
+#define S_red           #d70000
+#define S_magenta       #af005f
+#define S_violet        #5f5faf
+#define S_blue          #0087ff
+#define S_cyan          #00afaf
+#define S_green         #5f8700
+
+urxvt*background:       S_base3
+urxvt*foreground:		    S_base00
+urxvt*fadeColor:	   	  S_base3
+urxvt*cursorColor:  		S_base01
+urxvt*pointerColorBackground:S_base1
+urxvt*pointerColorForeground:S_base01
 
 ! black
-urxvt*color0:			#073642
-urxvt*color8:			#002b36
+urxvt*color0:			  S_base02
+urxvt*color8:			  S_base03
 ! red
-urxvt*color1:			#dc322f
-urxvt*color9:			#cb4b16
+urxvt*color1:			  S_red
+urxvt*color9:			  S_orange
 ! green
-urxvt*color2:			#859900
-urxvt*color10:			#586e75
+urxvt*color2:			  S_green
+urxvt*color10:			S_base01
 ! yellow
-urxvt*color3:			#b58900
-urxvt*color11:			#657b83
+urxvt*color3:			  S_yellow
+urxvt*color11:			S_base00
 ! blue
-urxvt*color4:			#268bd2
-urxvt*color12:			#839496
+urxvt*color4:			  S_blue
+urxvt*color12:			S_base0
 ! magenta
-urxvt*color5:			#d33682
-urxvt*color13:			#6c71c4
+urxvt*color5:			  S_magenta
+urxvt*color13:			S_violet
 ! cyan
-urxvt*color6:			#2aa198
-urxvt*color14:			#93a1a1
+urxvt*color6:			  S_cyan
+urxvt*color14:			S_base1
 ! white
-urxvt*color7:			#eee8d5
-urxvt*color15:			#fdf6e3
+urxvt*color7:			  S_base2
+urxvt*color15:			S_base3
