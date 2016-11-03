@@ -64,6 +64,10 @@ set fileencoding=utf-8
 set showmatch
 set matchtime=3
 
+" mouse-mode
+set mouse=a
+set ttymouse=xterm2
+
 " 折り返し
 set wrap
 
@@ -90,6 +94,10 @@ let $PATH = $PATH . ':' . expand('~/.local/bin')
 
 "" Keymaps
 "{{{
+
+" 誤使用防止
+nnoremap q <Nop>
+nnoremap Q q
 
 " jj で挿入モードから抜ける
 inoremap jj <Esc><Right>
