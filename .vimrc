@@ -25,7 +25,7 @@ if _curfile == 'Makefile'
   set noexpandtab
 endif
 
-" 折りたたみ
+" Folding
 set foldmethod=marker
 
 " 行番号
@@ -54,7 +54,7 @@ set backspace=indent,eol,start
 
 " clipboard
 set clipboard+=unnamed
-set clipboard=unnamed
+set clipboard+=autoselect
 
 " encoding
 set encoding=utf8
@@ -103,6 +103,9 @@ inoremap <C-l> <Right>
 inoremap <C-0> <Home>
 inoremap <C-\> <End>
 
+" " insert space
+" nnoremap <C-s> i<Esc><Right>
+
 " 便利
 noremap ; :
 noremap <S-h> ^
@@ -130,7 +133,7 @@ noremap <C-e> :make run<Enter>
 noremap <C-t> :make clean<Enter>
 
 " ハイライト解除
-nnoremap <C-/> :noh<CR>
+nnoremap <F3> :noh<CR>
 "}}}
 
 "" dein.vim
@@ -188,6 +191,8 @@ call dein#add('kana/vim-filetype-haskell')
 call dein#add('eagletmt/ghcmod-vim')
 call dein#add('ujihisa/neco-ghc')
 call dein#add('dag/vim2hs')
+call dein#add('thinca/vim-ref')
+call dein#add('ujihisa/ref-hoogle')
 " Syntax-check
 call dein#add('osyo-manga/shabadou.vim')
 call dein#add('osyo-manga/vim-watchdogs')
@@ -345,7 +350,6 @@ let g:quickrun_config = {
 \ },
 \ "watchdogs_checker/ghc-mod" : {
 \   "command" : "ghc-mod",
-\   "exec" : '%c %o --hlintOpt="--language=XmlSyntax" check %s:p',
 \ },
 \ "haskell/watchdogs_checker" : {
 \   "type" : "watchdogs_checker/ghc-mod"
@@ -355,6 +359,7 @@ let g:quickrun_config = {
 call watchdogs#setup(g:quickrun_config)
 "}}}
 
+" \   "exec" : '%c %o --hlintOpt="--language=XmlSyntax" check %s:p',
 
 "" vim-watchdogs
 "{{{
@@ -388,3 +393,4 @@ function! s:unite_my_settings()
 	imap <buffer> jj <Plug>(unite_insert_leave)
 endfunction
 "}}}
+
