@@ -67,6 +67,9 @@ setopt auto_pushd
 # コマンドが履歴に含まれる場合,古い方を削除
 setopt hist_ignore_all_dups
 
+# Path
+path=($HOME/.local/bin(N-/) $path)
+
 # 小文字で大文字を補完
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
@@ -87,9 +90,9 @@ setopt globdots
 autoload colors
 colors
 
-export LSCOLORS=gxfxcxdxbxexexaxaxaxax
-export LS_COLORS='di=36;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;46'
-zstyle ':completion:*' list-colors 'di=32'
+export LSCOLORS=ExFxCxdxBxegedabagacad
+export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
 
 case "${OSTYPE}" in
 linux*)
