@@ -1,9 +1,9 @@
-" ------------ "
-" vim settings "
-" ~/.vimrc     "
-" ------------ "
+" ======================= "
+" Neovim settings         "
+" ~/.config/nvim/init.vim "
+" ======================= "
 
-"" 雑多
+" --雑多--
 "{{{
 
 " indent
@@ -87,7 +87,7 @@ au BufRead,BufNewFile *.md set filetype=markdown
 let $PATH = $PATH . ':' . expand('~/.local/bin')
 "}}}
 
-"" Keymaps
+" --Keymaps--
 "{{{
 
 " 誤使用防止
@@ -139,7 +139,7 @@ noremap <C-t> :make clean<Enter>
 nnoremap <F3> :noh<CR>
 "}}}
 
-"" dein.vim
+" --dein.vim--
 "{{{
 
 " プラグインのインストール場所
@@ -168,6 +168,8 @@ call dein#add('Shougo/neoinclude.vim')
 " Unite.vim
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
+" Terminal
+call dein#add('kassio/neoterm')
 " Snipet
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
@@ -212,12 +214,12 @@ endif
 filetype plugin indent on
 "}}}
 
-"" deoplete
+" --deoplete--
 " Use deoplete
 let g:deoplete#enable_at_startup = 1
 
 
-"" Snippet
+" --Snippet--
 " Plugin key-mappings
 imap <C-,>     <Plug>(neosnippet_expand_or_jump)
 smap <C-,>     <Plug>(neosnippet_expand_or_jump)
@@ -237,7 +239,7 @@ if has('conceal')
 endif
 
 
-"" lightline.vim
+" --lightline.vim--
 set laststatus=2
 let g:lightline = {
 \   'colorscheme': 'wombat',
@@ -246,17 +248,17 @@ let g:lightline.component = {
     \ 'lineinfo': '%3l[%L]:%-2v'}
 
 
-" vim-markdown
+" --vim-markdown--
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 
-" indentLine
+" --indentLine--
 let g:indentLine_color_term = 111
 let g:indentLine_color_gui = '#708090'
 let g:indentLine_char = '¦'
 
 
-"" quickrun.vim
+" --quickrun.vim--
 "{{{
 let g:quickrun_config = {
 \ "_" :{
@@ -288,7 +290,7 @@ call watchdogs#setup(g:quickrun_config)
 
 " \   "exec" : '%c %o --hlintOpt="--language=XmlSyntax" check %s:p',
 
-"" vim-watchdogs
+" --vim-watchdogs--
 "{{{
 " 関数に設定を渡す
 call watchdogs#setup(g:quickrun_config)
@@ -297,7 +299,7 @@ let g:watchdogs_check_BufWritePost_enable = 1
 "}}}
 
 
-"" unite.vim
+" --unite.vim--
 "{{{
 
 " insert モードで開始する
@@ -320,4 +322,3 @@ function! s:unite_my_settings()
 	imap <buffer> jj <Plug>(unite_insert_leave)
 endfunction
 "}}}
-
