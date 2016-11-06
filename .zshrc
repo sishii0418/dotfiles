@@ -1,4 +1,7 @@
-# ~/.zshrc zsh シェルの設定
+# ============ #
+# Zsh settings #
+# ~/.zshrc     #
+# ============ #
 
 
 # export
@@ -9,7 +12,36 @@ export XDG_CONFIG_HOME=~/.config
 # 自動補完
 autoload -Uz compinit; compinit
 
+# コマンドのスペルミスを指摘
+setopt correct
+
+# 移動したディレクトリを記録 "cd -[Tab]" で一覧
+setopt auto_pushd
+
+# コマンドが履歴に含まれる場合,古い方を削除
+setopt hist_ignore_all_dups
+
+# Path
+path=($HOME/.local/bin(N-/) $path)
+
+# 小文字で大文字を補完
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# ディレクトリ名の入力で cd
+setopt auto_cd
+
+# 補完候補を一覧で表示
+setopt auto_list
+setopt nonomatch
+
+# 補完時,8ビットを通す
+setopt print_eight_bit
+
+# 隠しファイルをマッチ
+setopt globdots
+
 # alias
+# {{{
 alias vim='nvim'
 
 alias -g ...='../..'
@@ -55,34 +87,7 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 function runcpp(){ g++ -O2 $1; ./a.out }
 alias -s {c,cpp}=runcpp
-
-# コマンドのスペルミスを指摘
-setopt correct
-
-# 移動したディレクトリを記録 "cd -[Tab]" で一覧
-setopt auto_pushd
-
-# コマンドが履歴に含まれる場合,古い方を削除
-setopt hist_ignore_all_dups
-
-# Path
-path=($HOME/.local/bin(N-/) $path)
-
-# 小文字で大文字を補完
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-# ディレクトリ名の入力で cd
-setopt auto_cd
-
-# 補完候補を一覧で表示
-setopt auto_list
-setopt nonomatch
-
-# 補完時,8ビットを通す
-setopt print_eight_bit
-
-# 隠しファイルをマッチ
-setopt globdots
+# }}}
 
 # 色
 autoload colors
