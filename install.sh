@@ -1,10 +1,6 @@
 #!/bin/bash
 # dotfiles/install.sh
 
-if [! -f ~/.config/nvim]; then
-  mkdir ~/.config/nvim
-fi
-
 ln -si dotfiles/init.vim ~/.config/nvim/init.vim
 ln -si dotfiles/.zshrc ~/.zshrc
 ln -si dotfiles/.tmux.conf ~/.tmux.conf
