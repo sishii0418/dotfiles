@@ -53,7 +53,6 @@ set scrolloff=5
 set backspace=indent,eol,start
 
 " encoding
-set encoding=utf8
 set fileencoding=utf-8
 
 " match
@@ -94,9 +93,12 @@ let $PATH = $PATH . ':' . expand('~/.local/bin')
 nnoremap q <Nop>
 nnoremap Q q
 
-" jj で挿入モードから抜ける
+" open new terminal-tab
+nnoremap <C-t> :tabnew<CR>:terminal<CR>
+
+" escape insert/terminal mode
 inoremap jj <Esc><Right>
-inoremap JJ <Esc><Right>
+tnoremap <Esc> <C-\><C-n>
 
 " 挿入モードで移動
 inoremap <C-h> <Left>
@@ -114,12 +116,6 @@ noremap ; :
 noremap <S-h> ^
 noremap <S-l> $
 
-" Shift + 矢印でウィンドウサイズを変更
-nnoremap <S-Left>  <C-w><<CR>
-nnoremap <S-Right> <C-w>><CR>
-nnoremap <S-Up>    <C-w>-<CR>
-nnoremap <S-Down>  <C-w>+<CR>
-
 " Tab で対応の括弧にジャンプ
 nnoremap <Tab> %
 vnoremap <Tab> %
@@ -129,11 +125,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
-
-" make
-noremap <C-u> :make<Enter>
-noremap <C-e> :make run<Enter>
-noremap <C-t> :make clean<Enter>
 
 " ハイライト解除
 nnoremap <F3> :noh<CR>
@@ -165,9 +156,14 @@ call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 " 補完
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/neoinclude.vim')
+" ウィンドウサイズ変更
+call dein#add('simeji/winresizer')
 " Unite.vim
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/neoyank.vim')
+call dein#add('Shougo/unite-outline')
+call dein#add('Shougo/vimfiler.vim')
 " Terminal
 call dein#add('kassio/neoterm')
 " Snipet
@@ -302,17 +298,29 @@ let g:watchdogs_check_BufWritePost_enable = 1
 " --unite.vim--
 "{{{
 
-" insert モードで開始する
+" insert モードで開始
 let g:unite_enable_start_insert=1
 " enable history/yank function
 let g:unite_source_history_yank_enable = 1
 " Prefix key
 nmap <Space> [unite]
 
-" カレントディレクトリを表示
+" buffer
+nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
+" show current directory
 nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-" register
+" registers
 nnoremap <silent> [unite]r :<C-u>Unite register<CR>
+" histories/yanks
+nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
+" 最近開いたファイル
+nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
+" outline
+nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
+" vimfiler
+let g:vimfiler_as_default_explorer = 1
+nnoremap <silent> [unite]f :VimFiler<CR>
+
 " unite.vimを開いている間のキーマッピング
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
