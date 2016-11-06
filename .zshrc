@@ -1,19 +1,17 @@
 # ~/.zshrc zsh シェルの設定
 
 
-# Language setting
+# export
 export LANG=en_US.UTF-8
-
-# editor
-export EDITOR=vim
-
-# neovim のファイル置き場
+export EDITOR=nvim
 export XDG_CONFIG_HOME=~/.config
 
 # 自動補完
 autoload -Uz compinit; compinit
 
 # alias
+alias vim='nvim'
+
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g G='| grep'
