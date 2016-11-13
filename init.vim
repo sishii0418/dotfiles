@@ -14,6 +14,10 @@ set autoindent
 set smartindent
 set expandtab
 
+" for VimFiler
+set modifiable
+set write
+
 " conceal を無効化
 let g:markdown_syntax_conceal = 0
 let g:tex_conceal=''
@@ -317,8 +321,13 @@ nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
 nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
 " outline
 nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
+" bookmark
+nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
+" add bookmark
+nnoremap <silent> [unite]d :<C-u>UniteBookmarkAdd<CR>
 " vimfiler
 let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
 nnoremap <silent> [unite]f :VimFiler<CR>
 
 " unite.vimを開いている間のキーマッピング
