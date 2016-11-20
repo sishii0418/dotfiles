@@ -132,6 +132,9 @@ nnoremap <C-h> <C-w>h
 
 " ハイライト解除
 nnoremap <F3> :noh<CR>
+
+" Haskell で型を表示
+nnoremap \t :GhcModType<CR>
 "}}}
 
 " --dein.vim--
