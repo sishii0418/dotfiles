@@ -3,9 +3,11 @@
 " ~/.config/nvim/init.vim "
 " ======================= "
 
-" --雑多--
-"{{{
+" NOTES!!
+" better? 'itchyny/vim-haskell-indent'
 
+" --雑多--
+" {{{
 " indent
 set tabstop=2
 set shiftwidth=2
@@ -28,6 +30,9 @@ let _curfile=expand("%:r")
 if _curfile == 'Makefile'
   set noexpandtab
 endif
+
+" markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Folding
 set foldmethod=marker
@@ -88,10 +93,10 @@ au BufRead,BufNewFile *.md set filetype=markdown
 
 " stack のパス
 let $PATH = $PATH . ':' . expand('~/.local/bin')
-"}}}
+" }}}
 
 " --Keymaps--
-"{{{
+" {{{
 
 " 誤使用防止
 nnoremap q <Nop>
@@ -135,10 +140,10 @@ nnoremap <F3> :noh<CR>
 
 " Haskell で型を表示
 nnoremap \t :GhcModType<CR>
-"}}}
+" }}}
 
 " --dein.vim--
-"{{{
+" {{{
 
 " プラグインのインストール場所
 let s:dein_dir = expand('~/.cache/dein')
@@ -165,6 +170,8 @@ call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/neoinclude.vim')
 " ウィンドウサイズ変更
 call dein#add('simeji/winresizer')
+" Colorsheme
+call dein#add('altercation/vim-colors-solarized')
 " Unite.vim
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
@@ -215,14 +222,24 @@ if dein#check_install()
 endif
 
 filetype plugin indent on
-"}}}
+" }}}
 
 " --deoplete--
+" {{{
 " Use deoplete
 let g:deoplete#enable_at_startup = 1
+" }}}
 
+" --Solarized--
+" {{{
+syntax enable
+set background=light
+colorscheme solarized
+let g:solarized_termcolors=256
+" }}}
 
 " --Snippet--
+" {{{
 " Plugin key-mappings
 imap <C-,>     <Plug>(neosnippet_expand_or_jump)
 smap <C-,>     <Plug>(neosnippet_expand_or_jump)
@@ -240,29 +257,27 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-
+" }}}
 
 " --lightline.vim--
+" {{{
 set laststatus=2
 let g:lightline = {
 \   'colorscheme': 'wombat',
 \}
 let g:lightline.component = {
     \ 'lineinfo': '%3l[%L]:%-2v'}
-
-
-" --vim-markdown--
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
+" }}}
 
 " --indentLine--
+" {{{
 let g:indentLine_color_term = 111
 let g:indentLine_color_gui = '#708090'
 let g:indentLine_char = '¦'
-
+" }}}
 
 " --quickrun.vim--
-"{{{
+" {{{
 let g:quickrun_config = {
 \ "_" :{
 \   "runner" : "vimproc",
@@ -289,9 +304,8 @@ let g:quickrun_config = {
 \}
 " vim-watchdogs を呼び出し
 call watchdogs#setup(g:quickrun_config)
-"}}}
-
 " \   "exec" : '%c %o --hlintOpt="--language=XmlSyntax" check %s:p',
+" }}}
 
 " --vim-watchdogs--
 "{{{
@@ -301,9 +315,8 @@ call watchdogs#setup(g:quickrun_config)
 let g:watchdogs_check_BufWritePost_enable = 1
 "}}}
 
-
 " --unite.vim--
-"{{{
+" {{{
 
 " insert モードで開始
 let g:unite_enable_start_insert=1
@@ -341,4 +354,4 @@ function! s:unite_my_settings()
 	" insert モードのときjjでノーマルモードに移動
 	imap <buffer> jj <Plug>(unite_insert_leave)
 endfunction
-"}}}
+" }}}
