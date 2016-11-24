@@ -180,6 +180,8 @@ call dein#add('Shougo/unite-outline')
 call dein#add('Shougo/vimfiler.vim')
 " Terminal
 call dein#add('kassio/neoterm')
+" Git
+call dein#add('tpope/vim-fugitive')
 " Snipet
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
