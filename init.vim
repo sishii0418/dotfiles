@@ -4,7 +4,6 @@
 " ======================= "
 
 " NOTES!!
-" better? 'itchyny/vim-haskell-indent'
 
 " --雑多--
 " {{{
