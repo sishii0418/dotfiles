@@ -70,6 +70,9 @@ set matchtime=3
 " mouse-mode
 set mouse=a
 
+" 自動でコメントを挿入しない
+setlocal formatoptions-=r formatoptions-=o
+
 " 折り返し
 set wrap
 
@@ -86,9 +89,6 @@ set incsearch
 
 " 補完強化
 set wildmenu
-
-" .md ファイルをハイライト適用
-au BufRead,BufNewFile *.md set filetype=markdown
 
 " stack のパス
 let $PATH = $PATH . ':' . expand('~/.local/bin')
