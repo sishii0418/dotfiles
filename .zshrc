@@ -12,6 +12,9 @@ export XDG_CONFIG_HOME=~/.config
 # 自動補完
 autoload -Uz compinit; compinit
 
+# emacs mode
+bindkey -e
+
 # コマンドのスペルミスを指摘
 setopt correct
 
