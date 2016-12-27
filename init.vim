@@ -177,6 +177,8 @@ call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neoyank.vim')
 call dein#add('Shougo/unite-outline')
 call dein#add('Shougo/vimfiler.vim')
+" 括弧を囲む
+call dein#add('tpope/vim-surround')
 " Terminal
 call dein#add('kassio/neoterm')
 " Git
