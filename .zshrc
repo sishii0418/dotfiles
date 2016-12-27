@@ -118,3 +118,8 @@ PROMPT="%(?.%{${fg[green]}%}.%{${fg[red]}%})%B%n%b%# "
 RPROMPT="[%~]"
 
 zle -N zle-keymap-select
+
+# Compile
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+  zcompile ~/.zshrc
+fi
