@@ -12,8 +12,11 @@ export XDG_CONFIG_HOME=~/.config
 # 自動補完
 autoload -Uz compinit; compinit
 
-# emacs mode
-bindkey -e
+# '='以降も補完
+setopt magic_equal_subst
+
+# vi mode
+bindkey -v
 
 # コマンドのスペルミスを指摘
 setopt correct
@@ -44,17 +47,17 @@ setopt print_eight_bit
 setopt globdots
 
 # alias
-# {{{
 alias vim='nvim'
 
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g G='| grep'
+alias -g L='| less'
 
 alias ls='ls -G'
-alias mv='mv -i'
-alias cp='cp -i'
-alias mkdir='mkdir -p'
+alias mv='mv -iv'
+alias cp='cp -iv'
+alias mkdir='mkdir -pv'
 
 alias pacupg="sudo pacman -Syu"
 alias pacin="sudo pacman -S"
@@ -90,7 +93,6 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 function runcpp(){ g++ -O2 $1; ./a.out }
 alias -s {c,cpp}=runcpp
-# }}}
 
 # 色
 autoload colors
@@ -111,7 +113,7 @@ if [ -z $TMUX ]; then
 	tmux -2
 fi
 
-# プロンプト
+# Prompt
 PROMPT="%(?.%{${fg[green]}%}.%{${fg[red]}%})%B%n%b%# "
 RPROMPT="[%~]"
 
