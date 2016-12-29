@@ -1,4 +1,21 @@
 [[plugins]]
+repo = 'Shougo/neosnippet'
+depends = ['neosnippet-snippets']
+on_ft = 'snippet'
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+depends = 'neomru.vim'
+
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+depends = 'unite.vim'
+
+[[plugins]]
+repo = 'Shogo/neocomplete.vim'
+if = "has('lua')"
+
+[[plugins]]
 repo = 'tpope/vim-markdown'
 on_ft = ['markdown']
 

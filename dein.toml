@@ -19,10 +19,6 @@ repo = 'simeji/winresizer'
 repo = 'altercation/vim-colors-solarized'
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-depends = ['unite']
-
-[[plugins]]
 repo = 'Shougo/neomru.vim'
 depends = ['unite']
 
@@ -33,9 +29,6 @@ depends = ['unite']
 [[plugins]]
 repo = 'Shougo/unite-outline'
 depends = ['unite']
-
-[[plugins]]
-repo = 'Shougo/vimfiler.vim'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
