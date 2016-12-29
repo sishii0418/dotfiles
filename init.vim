@@ -30,9 +30,6 @@ if _curfile == 'Makefile'
   set noexpandtab
 endif
 
-" markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
 " Folding
 set foldmethod=marker
 
@@ -157,50 +154,35 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
-call dein#begin(expand('~/.cache/dein'))
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-call dein#add('Shougo/dein.vim')                        " パッケージ管理
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})  " Vimproc
-call dein#add('Shougo/deoplete.nvim')                   " 補完
-call dein#add('Shougo/neoinclude.vim')
-call dein#add('simeji/winresizer')                      " ウィンドウサイズを変更
-call dein#add('altercation/vim-colors-solarized')       " Colorsheme
-call dein#add('Shougo/unite.vim')
-call dein#add('Shougo/neomru.vim')
-call dein#add('Shougo/neoyank.vim')
-call dein#add('Shougo/unite-outline')                   " Outline を出力
-call dein#add('Shougo/vimfiler.vim')                    " Filer
-call dein#add('tpope/vim-surround')                     " 括弧を囲む
-call dein#add('kassio/neoterm')                         " Terminal
-call dein#add('tpope/vim-fugitive')                     " Git
-call dein#add('Shougo/neosnippet')                      " Snippet
-call dein#add('Shougo/neosnippet-snippets')
-call dein#add('tpope/vim-markdown')                     " markdown
-call dein#add('kannokanno/previm')
-call dein#add('tyru/open-browser.vim')
-call dein#add('tyru/caw.vim')                           " コメント挿入
-call dein#add('bronson/vim-trailing-whitespace')        " 行末スペースを強調
-call dein#add('itchyny/lightline.vim')                  " Interface
-call dein#add('Yggdroot/indentLine')                    " インデントを可視化
-call dein#add('airblade/vim-gitgutter')                 " 変更行を可視化
-call dein#add('thinca/vim-quickrun')                    " Quickrun
-call dein#add('lervag/vimtex')                          " Tex
-call dein#add('kana/vim-filetype-haskell')
-call dein#add('eagletmt/ghcmod-vim')
-call dein#add('ujihisa/neco-ghc')
-call dein#add('dag/vim2hs')
-call dein#add('thinca/vim-ref')
-call dein#add('ujihisa/ref-hoogle')                     " Hoogle を引く
-call dein#add('osyo-manga/shabadou.vim')                " syntax-check
-call dein#add('osyo-manga/vim-watchdogs')
-call dein#add('jceb/vim-hier')                          " エラー箇所をハイライト
+  " toml の場所
+  let s:toml = '$XDG_CONFIG_HOME/nvim/dein.toml'
+  let s:lazy_toml = '$XDG_CONFIG_HOME/nvim/deinlazy.toml'
 
-call dein#end()
+  " read toml
+  call dein#load_toml(s:toml,{'lazy':0})
+  call dein#load_toml(s:lazy_toml,{'lazy':1})
+
+  call dein#end()
+  call dein#save_state()
+endif
 
 " 自動インストール
 if dein#check_install()
   call dein#install()
 endif
+
+" 自動で削除
+function! s:deinClean()
+  if len(dein#check_clean())
+    call map(dein#check_clean(), 'delete(v:val, "rf")')
+  else
+    echo '[ERR] no disabled plugins'
+  endif
+endfunction
+command! DeinClean :call s:deinClean()f
 
 filetype plugin indent on
 " }}}
