@@ -87,6 +87,12 @@ set incsearch
 " 補完強化
 set wildmenu
 
+" open help with S-k
+set keywordprg=:help
+
+" Use help in Japanese
+set helplang=ja
+
 " stack のパス
 let $PATH = $PATH . ':' . expand('~/.local/bin')
 " }}}
@@ -105,6 +111,12 @@ nnoremap <C-t> :tabnew<CR>:terminal<CR>
 inoremap jj <Esc><Right>
 tnoremap <Esc> <C-\><C-n>
 
+" window navigation
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+
 " 挿入モードで移動
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
@@ -112,6 +124,9 @@ inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 inoremap <C-0> <Home>
 inoremap <C-\> <End>
+
+nnoremap j gj
+nnoremap k gk
 
 " " insert space
 " nnoremap <C-s> i<Esc><Right>
@@ -124,12 +139,6 @@ noremap <S-l> $
 " Tab で対応の括弧にジャンプ
 nnoremap <Tab> %
 vnoremap <Tab> %
-
-" window navigation
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
 
 " ハイライト解除
 nnoremap <F3> :noh<CR>
