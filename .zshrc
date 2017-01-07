@@ -58,6 +58,7 @@ alias ls='ls -G'
 alias mv='mv -iv'
 alias cp='cp -iv'
 alias mkdir='mkdir -pv'
+alias rm='rm -rv'
 
 alias pacupg="sudo pacman -Syu"
 alias pacin="sudo pacman -S"
