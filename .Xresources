@@ -4,12 +4,12 @@
 
 
 ! fonts
-urxvt.font:         xft:Ricty:size=12:antialias=true
-urxvt.allow_bold:   true
-urxvt.letterSpace:  -1
+urxvt.font:             xft:Ricty:size=12:antialias=true
+urxvt.allow_bold:       true
+urxvt.letterSpace:      -1
 
 ! scrollbar
-urxvt*scrollBar:  false
+urxvt*scrollBar:        false
 
 ! IME
 urxvt.perl-ext-common:  ...,xim-onthespot,...
@@ -18,12 +18,14 @@ urxvt.preeditType:      OnTheSpot
 urxvt.perl-ext:         xim-onthespot
 
 ! set login shell
-urxvt*loginshell: true
+urxvt*loginshell:       true
 
 ! open links
 URxvt.perl-ext-common:  default,matcher
 URxvt.url-launcher:     /usr/bin/xdg-open
 URxvt.matcher.button:   1
+
+Xft.rgba:               rgb
 
 ! ----- !
 ! Color !
