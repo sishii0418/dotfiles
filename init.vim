@@ -15,6 +15,9 @@ set autoindent
 set smartindent
 set expandtab
 
+" Golang
+set rtp+=/home/shunsuke/go/src/github.com/nsf/gocode/nvim/
+
 " for VimFiler
 set modifiable
 set write
