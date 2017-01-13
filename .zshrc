@@ -8,6 +8,9 @@
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 export XDG_CONFIG_HOME=~/.config
+export GOROOT=/usr/lib/go
+export GOPATH=~/go
+export PATH=$PATH:$GOROOT/bin
 
 # 自動補完
 autoload -Uz compinit; compinit
