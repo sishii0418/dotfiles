@@ -317,9 +317,7 @@ nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
 " add bookmark
 nnoremap <silent> [unite]d :<C-u>UniteBookmarkAdd<CR>
 " vimfiler
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default = 0
-nnoremap <silent> [unite]f :VimFiler<CR>
+nnoremap <silent> [unite]f :VimFiler -split -simple -winwidth=30 -no-quit<CR>
 
 " unite.vimを開いている間のキーマッピング
 autocmd FileType unite call s:unite_my_settings()
@@ -329,4 +327,10 @@ function! s:unite_my_settings()
 	" insert モードのときjjでノーマルモードに移動
 	imap <buffer> jj <Plug>(unite_insert_leave)
 endfunction
+" }}}
+
+" --VimFiler--
+" {{{
+let g:vimfiler_as_default_explorer = 1 " デフォルトと置き換える
+let g:vimfiler_safe_mode_by_default = 1
 " }}}
