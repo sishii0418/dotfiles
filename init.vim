@@ -107,8 +107,8 @@ let $PATH = $PATH . ':' . expand('~/.local/bin')
 nnoremap q <Nop>
 nnoremap Q q
 
-" open new terminal-tab
-nnoremap <C-t> :tabnew<CR>:terminal<CR>
+" Tab
+nnoremap <C-t> :tabnew<CR>
 
 " escape insert/terminal mode
 inoremap jj <Esc><Right>
@@ -262,10 +262,10 @@ let g:quickrun_config = {
 \ },
 \ "tex" : {
 \   'command' : 'latexmk',
-\   "outputter/buffer/split" : ":botright 8sp",
+\   "outputter/buffer/split" : ":botright 7sp",
 \   'outputter/error/error' : 'quickfix',
-\   'hook/cd/directory': '%S:h',
-\   'exec': '%c %s'
+\   'hook/cd/directory' : '%S:h',
+\   'exec' : '%c %s'
 \ },
 \ "watchdogs_checker/_" : {
 \   "hook/copen/enable_exist_data" : 1,
