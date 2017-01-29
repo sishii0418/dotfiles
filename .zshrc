@@ -59,7 +59,7 @@ alias -g L='| less'
 
 alias ls='ls -G'
 alias mv='mv -iv'
-alias cp='cp -iv'
+alias cp='cp -ivr'
 alias mkdir='mkdir -pv'
 alias rm='rm -rv'
 
