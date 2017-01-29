@@ -13,4 +13,3 @@
 ## Notes
 * On 5Nov16, Shift from Vim to Neovim. VIMRC was deleted.
 * for vim, delete deoplete.nvim and install neocomplete.vim.
-* dein.toml will be made.
