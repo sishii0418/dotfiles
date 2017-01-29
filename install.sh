@@ -1,9 +1,10 @@
 #!/bin/bash
 # dotfiles/install.sh
 
-ln -si dotfiles/init.vim ~/.config/nvim/init.vim
-ln -si dotfiles/dein.toml ~/.config/nvim/dein.toml
-ln -si dotfiles/deinlazy.toml ~/.config/nvim/deinlazy.toml
-ln -si dotfiles/.zshrc ~/.zshrc
-ln -si dotfiles/.tmux.conf ~/.tmux.conf
-ln -si dotfiles/.Xresources ~/.Xresources
+# NOTE: run at ~/dotfiles
+ln -si ./init.vim       $XDG_CONFIG_HOME/nvim/init.vim
+ln -si ./dein.toml      $XDG_CONFIG_HOME/nvim/dein.toml
+ln -si ./deinlazy.toml  $XDG_CONFIG_HOME/nvim/deinlazy.toml
+ln -si ./.zshrc         ~/.zshrc
+ln -si ./.tmux.conf     ~/.tmux.conf
+ln -si ./.Xresources    ~/.Xresources
