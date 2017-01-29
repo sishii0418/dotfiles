@@ -17,32 +17,36 @@ if = "has('lua')"
 
 [[plugins]]
 repo = 'tpope/vim-markdown'
-on_ft = ['markdown']
+on_ft = 'markdown'
 
 [[plugins]]
 repo = 'lervag/vimtex'
-on_ft = ['tex']
+on_ft = 'tex'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
 
 [[plugins]]
 repo = 'kana/vim-filetype-haskell'
-on_ft = ['haskell']
+on_ft = 'haskell'
 
 [[plugins]]
 repo = 'eagletmt/ghcmod-vim'
-on_ft = ['haskell']
+on_ft = 'haskell'
 
 [[plugins]]
 repo = 'ujihisa/neco-ghc'
-on_ft = ['haskell']
+on_ft = 'haskell'
 
 [[plugins]]
 repo = 'dag/vim2hs'
-on_ft = ['haskell']
+on_ft = 'haskell'
 
 [[plugins]]
 repo = 'thinca/vim-ref'
-on_ft = ['haskell']
+on_ft = 'haskell'
 
 [[plugins]]
 repo = 'ujihisa/ref-hoogle'
-on_ft = ['haskell']
+on_ft = 'haskell'
