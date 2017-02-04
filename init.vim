@@ -260,13 +260,6 @@ let g:quickrun_config = {
 \   "outputter/buffer/split" : ":botright 7sp",
 \   "outputter/buffer/close_on_empty" : 1
 \ },
-\ 'haskell/ghc': {
-\   'command': 'stack ghc',
-\   'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
-\   'cmdopt': '-v0 --make',
-\   'tempfile': '%{tempname()}.hs',
-\   'hook/sweep/files': ['%S:p:r', '%S:p:r.o', '%S:p:r.hi'],
-\ },
 \ "tex" : {
 \   'command' : 'latexmk',
 \   "outputter/buffer/split" : ":botright 7sp",
@@ -325,6 +318,8 @@ nnoremap <silent> [unite]k :<C-u>Unite bookmark<CR>
 nnoremap <silent> [unite]d :<C-u>UniteBookmarkAdd<CR>
 " vimfiler
 nnoremap <silent> [unite]f :VimFiler -split -simple -winwidth=30 -no-quit<CR>
+" haskellimport
+nnoremap <silent> [unite]i :<C-u>Unite haskellimport<CR>
 
 " unite.vimを開いている間のキーマッピング
 autocmd FileType unite call s:unite_my_settings()
