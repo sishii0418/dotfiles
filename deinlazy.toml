@@ -50,3 +50,8 @@ on_ft = 'haskell'
 [[plugins]]
 repo = 'ujihisa/ref-hoogle'
 on_ft = 'haskell'
+
+[[plugins]]
+repo = 'ujihisa/unite-haskellimport'
+on_ft = 'haskell'
+depends = 'unite.vim'
