@@ -260,6 +260,13 @@ let g:quickrun_config = {
 \   "outputter/buffer/split" : ":botright 7sp",
 \   "outputter/buffer/close_on_empty" : 1
 \ },
+\ 'haskell/ghc': {
+\   'command': 'stack ghc',
+\   'exec': ['%c %o %s -o %s:p:r', '%s:p:r %a'],
+\   'cmdopt': '-v0 --make',
+\   'tempfile': '%{tempname()}.hs',
+\   'hook/sweep/files': ['%S:p:r', '%S:p:r.o', '%S:p:r.hi'],
+\ },
 \ "tex" : {
 \   'command' : 'latexmk',
 \   "outputter/buffer/split" : ":botright 7sp",
