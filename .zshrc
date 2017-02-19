@@ -3,6 +3,7 @@
 # ~/.zshrc     #
 # ============ #
 
+# メモ: ファイル分割しろ!
 
 # export
 export LANG=en_US.UTF-8
@@ -18,8 +19,8 @@ autoload -Uz compinit; compinit
 # '='以降も補完
 setopt magic_equal_subst
 
-# vi mode
-bindkey -v
+# emacs mode
+bindkey -e
 
 # コマンドのスペルミスを指摘
 setopt correct
@@ -43,11 +44,20 @@ setopt auto_cd
 setopt auto_list
 setopt nonomatch
 
+# 補完候補をカーソルキーで選択
+zstyle ':completion:*:default' menu select true
+
 # 補完時,8ビットを通す
 setopt print_eight_bit
 
 # 隠しファイルをマッチ
 setopt globdots
+
+# 同時に起動したzshの間でヒストリを共有
+setopt share_history
+
+# ワイルドカード展開
+setopt hist_reduce_blanks
 
 # alias
 alias vim='nvim'
@@ -55,9 +65,15 @@ alias vim='nvim'
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g G='| grep'
+alias -g H='| head'
 alias -g L='| less'
+alias -g T='| tail'
+alias -g W='| wc -l'
 
 alias ls='ls -G'
+alias la='ls -a'
+alias ll='ls -l'
+alias lal='ls -al'
 alias mv='mv -iv'
 alias cp='cp -ivr'
 alias mkdir='mkdir -pv'
@@ -78,6 +94,9 @@ alias yaoreps="yaourt -Ss"
 
 alias sysstr="sudo systemctl start"
 alias sysenb="sudo systemctl enable"
+
+alias pkgin="sudo pkg install"
+alias pkgse="pkg search"
 
 function extract() {
   case $1 in
