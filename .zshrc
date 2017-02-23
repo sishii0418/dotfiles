@@ -129,7 +129,7 @@ zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'b
 
 # tmux 自動起動
 if [ -z $TMUX ]; then
-	tmux -2
+  tmux -2
 fi
 
 # Prompt
