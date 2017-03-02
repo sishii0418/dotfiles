@@ -13,6 +13,8 @@ export GOROOT=/usr/lib/go
 export GOPATH=~/go
 export PATH=$PATH:$GOROOT/bin
 
+# --雑多--
+# {{{
 # 自動補完
 autoload -Uz compinit; compinit
 
@@ -58,8 +60,10 @@ setopt share_history
 
 # ワイルドカード展開
 setopt hist_reduce_blanks
+# }}}
 
-# alias
+# --alias--
+# {{{
 alias vim='nvim'
 
 alias -g ...='../..'
@@ -74,11 +78,15 @@ alias ls='ls -G'
 alias la='ls -a'
 alias ll='ls -l'
 alias lal='ls -al'
+
 alias mv='mv -iv'
 alias cp='cp -ivr'
 alias mkdir='mkdir -pv'
 alias rm='rm -rv'
 alias cat='cat -n'
+
+alias setja='LANG=ja_JP.UTF_8'
+alias setc='LANG=C'
 
 alias pacupg="sudo pacman -Syu"
 alias pacin="sudo pacman -S"
@@ -117,6 +125,7 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 function runcpp(){ g++ -O2 $1; ./a.out }
 alias -s {c,cpp}=runcpp
+# }}}
 
 # 色
 autoload colors
