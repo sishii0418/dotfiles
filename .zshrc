@@ -77,7 +77,7 @@ alias -g T='| tail'
 alias -g W='| wc'
 alias -g X='| xargs'
 
-alias ls='ls -G'
+alias ls='ls --color'
 alias la='ls -a'
 alias ll='ls -l'
 alias lal='ls -al'
