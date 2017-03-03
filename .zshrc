@@ -68,11 +68,14 @@ alias vim='nvim'
 
 alias -g ...='../..'
 alias -g ....='../../..'
+alias -g A='| awk'
 alias -g G='| grep'
 alias -g H='| head'
 alias -g L='| less'
+alias -g S='| sed'
 alias -g T='| tail'
-alias -g W='| wc -l'
+alias -g W='| wc'
+alias -g X='| xargs'
 
 alias ls='ls -G'
 alias la='ls -a'
@@ -85,8 +88,8 @@ alias mkdir='mkdir -pv'
 alias rm='rm -rv'
 alias cat='cat -n'
 
-alias setja='LANG=ja_JP.UTF_8'
-alias setc='LANG=C'
+alias langja='LANG=ja_JP.UTF_8'
+alias langc='LANG=C'
 
 alias pacupg="sudo pacman -Syu"
 alias pacin="sudo pacman -S"
@@ -125,6 +128,10 @@ alias -s {gz,tgz,zip,lzh,bz2,tbz,Z,tar,arj,xz}=extract
 
 function runcpp(){ g++ -O2 $1; ./a.out }
 alias -s {c,cpp}=runcpp
+
+alias -s hs=runghc
+alias -s py=python
+alias -s rb=ruby
 # }}}
 
 # 色
