@@ -1,6 +1,6 @@
 [[plugins]]
 repo    = 'Shougo/neosnippet'
-depends = ['neosnippet-snippets']
+depends = 'neosnippet-snippets'
 on_ft   = 'snippet'
 
 [[plugins]]
@@ -58,3 +58,8 @@ depends = 'unite.vim'
 
 [[plugins]]
 repo    = 'rust-lang/rust.vim'
+on_ft   = 'rust'
+
+[[plugins]]
+repo    = 'racer-rust/vim-racer'
+on_ft   = 'rust'
