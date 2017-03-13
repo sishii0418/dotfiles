@@ -2,12 +2,12 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/vimproc.vim'
+repo  = 'Shougo/vimproc.vim'
 build = 'make'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-if = "has('nvim')"
+if   = "has('nvim')"
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
@@ -22,23 +22,23 @@ repo = 'simeji/winresizer'
 repo = 'altercation/vim-colors-solarized'
 
 [[plugins]]
-repo = 'Shougo/neomru.vim'
-depends = ['unite']
+repo    = 'Shougo/neomru.vim'
+depends = 'unite'
 
 [[plugins]]
-repo = 'Shougo/neoyank.vim'
-depends = ['unite']
+repo    = 'Shougo/neoyank.vim'
+depends = 'unite'
 
 [[plugins]]
-repo = 'Shougo/unite-outline'
-depends = ['unite']
+repo    = 'Shougo/unite-outline'
+depends = 'unite'
 
 [[plugins]]
 repo = 'tpope/vim-surround'
 
 [[plugins]]
 repo = 'kassio/neoterm'
-if = "has('nvim')"
+if   = "has('nvim')"
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
