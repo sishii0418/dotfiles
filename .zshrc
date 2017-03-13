@@ -11,7 +11,8 @@ export EDITOR=nvim
 export XDG_CONFIG_HOME=~/.config
 export GOROOT=/usr/lib/go
 export GOPATH=~/go
-export PATH=$PATH:$GOROOT/bin
+export CARGO=~/.cargo
+export PATH=$PATH:$GOROOT/bin:$CARGO/bin
 
 # --雑多--
 # {{{
