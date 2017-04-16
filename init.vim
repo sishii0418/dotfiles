@@ -320,6 +320,8 @@ nnoremap <silent> [unite]d :<C-u>UniteBookmarkAdd<CR>
 nnoremap <silent> [unite]f :VimFiler -split -simple -winwidth=30 -no-quit<CR>
 " haskellimport
 nnoremap <silent> [unite]i :<C-u>Unite haskellimport<CR>
+" ag
+nnoremap <silent> [unite]g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 
 " unite.vimを開いている間のキーマッピング
 autocmd FileType unite call s:unite_my_settings()
@@ -335,4 +337,29 @@ endfunction
 " {{{
 let g:vimfiler_as_default_explorer = 1 " デフォルトと置き換える
 let g:vimfiler_safe_mode_by_default = 1
+" }}}
+
+" --Rust--
+" {{{
+" 自動整形
+let g:rustfmt_autosave = 1
+let g:rustfmt_command = '$CARGO/bin/rustfmt'
+
+" racer
+set hidden
+let g:racer_cmd = '$CARGO/bin/racer'
+" }}}
+
+" --ag--
+" {{{
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+
+" unite grep に ag(The Silver Searcher) を使う
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
 " }}}
