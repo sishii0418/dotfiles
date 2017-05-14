@@ -110,6 +110,12 @@ alias sysenb="sudo systemctl enable"
 alias pkgin="sudo pkg install"
 alias pkgse="pkg search"
 
+alias dnfin="sudo dnf install"
+alias dnfse="dnf search"
+alias dnfrm="sudo dnf remove"
+alias dnfupg="sudo dnf upgrade"
+alias dnfif="dnf info"
+
 function extract() {
   case $1 in
     *.tar.gz|*.tgz) tar xzvf $1;;
