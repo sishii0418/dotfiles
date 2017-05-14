@@ -6,7 +6,6 @@
 ! fonts
 urxvt.font:             xft:Ricty:size=12:antialias=true
 urxvt.allow_bold:       true
-urxvt.letterSpace:      -1
 
 ! scrollbar
 urxvt*scrollBar:        false
