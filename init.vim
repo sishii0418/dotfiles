@@ -7,6 +7,25 @@
 
 " --雑多--
 " {{{
+set foldmethod=marker             " Folding
+set number                        " 行番号
+set title                         " タイトルを表示
+set ruler                         " ルーラーを表示
+set showcmd                       " 入力中のコマンドを表示
+syntax on                         " シンタックス
+set nocompatible                  " vi互換を使わない
+set scrolloff=5                   " スクロール
+set backspace=indent,eol,start
+set fileencoding=utf-8            " encoding
+set mouse=a                       " マウスモード
+set wrap                          " 折り返し
+set ambiwidth=double
+set hlsearch                      " 検索結果をハイライト
+set incsearch                     " インクリメンタルサーチ
+set wildmenu                      " 補完メニュー
+set keywordprg=:help              " S-k でヘルプを開く
+set helplang=ja                   " 日本語のヘルプを使用
+
 " indent
 set tabstop=2
 set shiftwidth=2
@@ -47,25 +66,14 @@ set smartcase
 " stack のパス
 let $PATH = $PATH . ':' . expand('~/.local/bin')
 
-set foldmethod=marker             " Folding
-set number                        " 行番号
-set title                         " タイトルを表示
-set ruler                         " ルーラーを表示
-set showcmd                       " 入力中のコマンドを表示
-syntax on                         " シンタックス
-set nocompatible                  " vi互換を使わない
-set scrolloff=5                   " スクロール
-set backspace=indent,eol,start
-set fileencoding=utf-8            " encoding
-set mouse=a                       " マウスモード
-set wrap                          " 折り返し
-set ambiwidth=double
-set hlsearch                      " 検索結果をハイライト
-set incsearch                     " インクリメンタルサーチ
-set wildmenu                      " 補完メニュー
-set keywordprg=:help              " S-k でヘルプを開く
-set helplang=ja                   " 日本語のヘルプを使用
-
+" ファイルを閉じても undo が有効
+if has('president_undo')
+  set undodir=~/.cache/undo
+  augroup vimrc-undofile
+    autocmd!
+    autocmd BufReadPre ~/* setlocal undofile
+  augroup END
+endif
 " }}}
 
 " --Keymaps--
