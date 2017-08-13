@@ -33,71 +33,39 @@ if _curfile == 'Makefile'
   set noexpandtab
 endif
 
-" Folding
-set foldmethod=marker
-
-" 行番号
-set number
-
-" タイトルを表示
-set title
-
-" ルーラーを表示
-set ruler
-
-" 入力中のコマンドを表示
-set showcmd
-
-" 色付け
-syntax on
-
-" vi 互換を使わない
-set nocompatible
-
-" スクロール
-set scrolloff=5
-
-" backspace
-set backspace=indent,eol,start
-
-" encoding
-set fileencoding=utf-8
-
 " match
 set showmatch
 set matchtime=3
-
-" mouse-mode
-set mouse=a
-
 " 自動でコメントを挿入しない
 setlocal formatoptions-=r formatoptions-=o
-
-" 折り返し
-set wrap
 
 " 補完時
 set infercase
 set ignorecase
 set smartcase
 
-" 検索結果をハイライト
-set hlsearch
-
-" インクリメンタルサーチ
-set incsearch
-
-" 補完強化
-set wildmenu
-
-" open help with S-k
-set keywordprg=:help
-
-" Use help in Japanese
-set helplang=ja
-
 " stack のパス
 let $PATH = $PATH . ':' . expand('~/.local/bin')
+
+set foldmethod=marker             " Folding
+set number                        " 行番号
+set title                         " タイトルを表示
+set ruler                         " ルーラーを表示
+set showcmd                       " 入力中のコマンドを表示
+syntax on                         " シンタックス
+set nocompatible                  " vi互換を使わない
+set scrolloff=5                   " スクロール
+set backspace=indent,eol,start
+set fileencoding=utf-8            " encoding
+set mouse=a                       " マウスモード
+set wrap                          " 折り返し
+set ambiwidth=double
+set hlsearch                      " 検索結果をハイライト
+set incsearch                     " インクリメンタルサーチ
+set wildmenu                      " 補完メニュー
+set keywordprg=:help              " S-k でヘルプを開く
+set helplang=ja                   " 日本語のヘルプを使用
+
 " }}}
 
 " --Keymaps--
