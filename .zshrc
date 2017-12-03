@@ -12,7 +12,7 @@ export XDG_CONFIG_HOME=~/.config
 export GOROOT=/usr/lib/go
 export GOPATH=~/go
 export CARGO=~/.cargo
-export PATH=$PATH:$GOROOT/bin:$CARGO/bin
+export PATH=$PATH:$GOROOT/bin:$CARGO/bin:~/.local/bin:~/.local/lib
 
 # --雑多--
 # {{{
@@ -115,6 +115,9 @@ alias dnfse="dnf search"
 alias dnfrm="sudo dnf remove"
 alias dnfupg="sudo dnf upgrade"
 alias dnfif="dnf info"
+
+alias ヴぃm="vim"
+alias cむs="cmus"
 
 function extract() {
   case $1 in
