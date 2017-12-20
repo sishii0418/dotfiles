@@ -236,6 +236,9 @@ let g:quickrun_config = {
 \   "outputter/buffer/split" : ":botright 7sp",
 \   "outputter/buffer/close_on_empty" : 1
 \ },
+\ "python" :{
+\   'command' : 'python3'
+\ },
 \ "tex" : {
 \   'command' : 'latexmk',
 \   "outputter/buffer/split" : ":botright 7sp",
