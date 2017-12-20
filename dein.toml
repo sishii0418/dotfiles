@@ -81,3 +81,6 @@ repo = 'osyo-manga/vim-watchdogs'
 
 [[plugins]]
 repo = 'jceb/vim-hier'
+
+[[plugins]]
+repo = 'vim-syntastic/syntastic'

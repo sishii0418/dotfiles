@@ -63,3 +63,14 @@ on_ft   = 'rust'
 [[plugins]]
 repo    = 'racer-rust/vim-racer'
 on_ft   = 'rust'
+
+[[plugins]]
+repo    = 'zchee/deoplete-jedi'
+on_ft   = 'python'
+hook_add = '''
+  autocmd Filetype Python setlocal completeopt-=preview
+'''
+
+[[plugins]]
+repo    = 'kevinw/pyflakes-vim'
+on_ft   = 'python'
