@@ -8,3 +8,4 @@ ln -si $HOME/dotfiles/.zshrc        $HOME/.zshrc
 ln -si $HOME/dotfiles/.tmux.conf    $HOME/.tmux.conf
 ln -si $HOME/dotfiles/.Xresources   $HOME/.Xresources
 ln -si $HOME/dotfiles/.xinitrc      $HOME/.xinitrc
+ln -si $HOME/dotfiles/.latexmkrc    $HOME/.latexmkrc
