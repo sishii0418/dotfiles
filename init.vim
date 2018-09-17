@@ -74,6 +74,8 @@ if has('president_undo')
     autocmd BufReadPre ~/* setlocal undofile
   augroup END
 endif
+
+let g:vimtex_view_general_viewer = 'evince'
 " }}}
 
 " --Keymaps--
@@ -244,7 +246,16 @@ let g:quickrun_config = {
 \   "outputter/buffer/split" : ":botright 7sp",
 \   'outputter/error/error' : 'quickfix',
 \   'hook/cd/directory' : '%S:h',
-\   'exec' : '%c %s'
+\   'exec' : '%c %s',
+\   'cmdopt': '-pv'
+\ },
+\ "plaintex" : {
+\   'command' : 'latexmk',
+\   "outputter/buffer/split" : ":botright 7sp",
+\   'outputter/error/error' : 'quickfix',
+\   'hook/cd/directory' : '%S:h',
+\   'exec' : '%c %s',
+\   'cmdopt': '-pv'
 \ },
 \ "watchdogs_checker/_" : {
 \   "hook/copen/enable_exist_data" : 1,
