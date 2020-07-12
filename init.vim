@@ -4,6 +4,7 @@
 " ======================= "
 
 " NOTES!!
+" WSLで使うためにSolarized無効化
 
 " --雑多--
 " {{{
@@ -186,9 +187,9 @@ let g:deoplete#enable_at_startup = 1
 " --Solarized--
 " {{{
 syntax enable
-set background=light
-colorscheme solarized
-let g:solarized_termcolors=256
+" set background=dark
+" colorscheme solarized
+" let g:solarized_termcolors=256
 " }}}
 
 " --Snippet--
