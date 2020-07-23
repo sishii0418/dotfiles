@@ -13,6 +13,9 @@ if   = "has('nvim')"
 repo = 'Shougo/neoinclude.vim'
 
 [[plugins]]
+repo = 'Shougo/vimproc.vim'
+
+[[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 
 [[plugins]]
