@@ -27,6 +27,8 @@ set wildmenu                      " 補完メニュー
 set keywordprg=:help              " S-k でヘルプを開く
 set helplang=ja                   " 日本語のヘルプを使用
 
+hi MatchParen ctermfg=yellow ctermbg=green      " 括弧の色
+
 " indent
 set tabstop=2
 set shiftwidth=2
