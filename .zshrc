@@ -13,6 +13,7 @@ export GOROOT=/usr/lib/go
 export GOPATH=~/go
 export CARGO=~/.cargo
 export PATH=$PATH:$GOROOT/bin:$CARGO/bin:~/.local/bin:~/.local/lib
+export DISPLAY=localhost:0.0 # WSL vimにコピペ
 
 # --雑多--
 # {{{
