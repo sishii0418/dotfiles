@@ -8,6 +8,10 @@
 
 " --雑多--
 " {{{
+"
+let g:python3_host_prog= "/usr/bin/python3"
+
+
 set foldmethod=marker             " Folding
 set number                        " 行番号
 set title                         " タイトルを表示
@@ -355,4 +359,9 @@ if executable('ag')
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
 endif
+" }}}
+
+" --supertab--
+" {{{
+let g:SuperTabDefaultCompletionType = "<c-n>"
 " }}}
