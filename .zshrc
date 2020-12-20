@@ -78,6 +78,7 @@ alias -g S='| sed'
 alias -g T='| tail'
 alias -g W='| wc'
 alias -g X='| xargs'
+alias -g SJIS='| iconv -f SJIS'
 
 alias ls='ls --color'
 alias la='ls -a'
@@ -117,6 +118,12 @@ alias dnfrm="sudo dnf remove"
 alias dnfupg="sudo dnf upgrade"
 alias dnfif="dnf info"
 
+alias aptin="sudo apt install"
+alias aptse="sudo apt search"
+alias aptrm="sudo apt remove"
+alias aptup="sudo apt update"
+alias aptug="sudo apt upgrade"
+
 alias ヴぃm="vim"
 alias cむs="cmus"
 
@@ -141,7 +148,7 @@ function runcpp(){ g++ -O2 $1; ./a.out }
 alias -s {c,cpp}=runcpp
 
 alias -s hs=runghc
-alias -s py=python
+alias -s py=python3
 alias -s rb=ruby
 # }}}
 
