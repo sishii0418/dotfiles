@@ -193,9 +193,12 @@ let g:deoplete#enable_at_startup = 1
 " --Solarized--
 " {{{
 syntax enable
-" set background=dark
-" colorscheme solarized
-" let g:solarized_termcolors=256
+set termguicolors
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let g:solarized_termcolors=256
+set background=light
+colorscheme solarized
 " }}}
 
 " --Snippet--
