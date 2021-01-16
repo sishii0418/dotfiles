@@ -68,6 +68,9 @@ setopt hist_reduce_blanks
 # {{{
 alias vim='nvim'
 
+alias pbcopy='xclip -selection c'
+alias pbpaste='xclip -selection c -o'
+
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g A='| awk'
@@ -79,6 +82,7 @@ alias -g T='| tail'
 alias -g W='| wc'
 alias -g X='| xargs'
 alias -g SJIS='| iconv -f SJIS'
+alias -g Y='| pbcopy'
 
 alias ls='ls --color'
 alias la='ls -a'
