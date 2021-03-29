@@ -59,9 +59,6 @@ repo = 'tyru/open-browser.vim'
 repo = 'tyru/caw.vim'
 
 [[plugins]]
-repo = 'bronson/vim-trailing-whitespace'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]

@@ -116,8 +116,8 @@ inoremap <C-\> <End>
 nnoremap j gj
 nnoremap k gk
 
-" " insert space
-" nnoremap <C-s> i<Esc><Right>
+" enterで空行挿入
+nnoremap <CR> o<ESC>
 
 " 便利
 noremap ; :

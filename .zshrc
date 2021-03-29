@@ -93,7 +93,7 @@ alias mv='mv -iv'
 alias cp='cp -ivr'
 alias mkdir='mkdir -pv'
 alias rm='rm -rv'
-alias cat='cat -n'
+alias catn='cat -n'
 
 alias langja='LANG=ja_JP.UTF_8'
 alias langc='LANG=C'
@@ -125,6 +125,7 @@ alias dnfif="dnf info"
 alias aptin="sudo apt install"
 alias aptse="sudo apt search"
 alias aptrm="sudo apt remove"
+alias aptautorm="sudo apt autoremove"
 alias aptup="sudo apt update"
 alias aptug="sudo apt upgrade"
 

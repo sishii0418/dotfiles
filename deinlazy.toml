@@ -1,9 +1,4 @@
 [[plugins]]
-repo    = 'Shougo/neosnippet'
-depends = 'neosnippet-snippets'
-on_ft   = 'snippet'
-
-[[plugins]]
 repo    = 'Shougo/unite.vim'
 depends = 'neomru.vim'
 
