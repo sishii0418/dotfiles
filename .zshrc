@@ -68,8 +68,8 @@ setopt hist_reduce_blanks
 # {{{
 alias vim='nvim'
 
-alias pbcopy='xclip -selection c'
-alias pbpaste='xclip -selection c -o'
+alias pbcopy='clip.exe'
+alias pbpaste='powershell.exe /c Get-Clipboard'
 
 alias -g ...='../..'
 alias -g ....='../../..'
@@ -94,6 +94,7 @@ alias cp='cp -ivr'
 alias mkdir='mkdir -pv'
 alias rm='rm -rv'
 alias catn='cat -n'
+alias rename='rename --filename --verbose'
 
 alias langja='LANG=ja_JP.UTF_8'
 alias langc='LANG=C'
