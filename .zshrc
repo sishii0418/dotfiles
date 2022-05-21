@@ -13,7 +13,8 @@ export GOROOT=/usr/lib/go
 export GOPATH=~/go
 export CARGO=~/.cargo
 export PATH=$PATH:$GOROOT/bin:$CARGO/bin:~/.local/bin:~/.local/lib
-export DISPLAY=localhost:0.0 # WSL vimにコピペ
+# export DISPLAY=localhost:0.0 # WSL1
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0 # WSL2用
 
 # --雑多--
 # {{{
@@ -51,7 +52,7 @@ setopt nonomatch
 # 補完候補をカーソルキーで選択
 zstyle ':completion:*:default' menu select true
 
-# 補完時,8ビットを通す
+# 補完時, 8ビットを通す
 setopt print_eight_bit
 
 # 隠しファイルをマッチ
@@ -84,7 +85,7 @@ alias -g X='| xargs'
 alias -g SJIS='| iconv -f SJIS'
 alias -g Y='| pbcopy'
 
-alias ls='ls --color'
+alias ls='ls --color=auto'
 alias la='ls -a'
 alias ll='ls -l'
 alias lal='ls -al'
@@ -168,9 +169,9 @@ zstyle ':completion:*' list-colors 'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'b
 
 
 # tmux 自動起動
-if [ -z $TMUX ]; then
-  tmux -2
-fi
+# if [ -z $TMUX ]; then
+#   tmux -2
+# fi
 
 # Prompt
 PROMPT="%(?.%{${fg[green]}%}.%{${fg[red]}%})%B%n%b%# "
