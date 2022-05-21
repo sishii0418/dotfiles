@@ -66,3 +66,7 @@ on_ft   = 'python'
 # [[plugins]]
 # repo    = 'kevinw/pyflakes-vim'
 # on_ft   = 'python'
+
+[[plugins]]
+repo      = 'jez/vim-better-sml'
+on_ft     = 'sml'
