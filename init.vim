@@ -9,6 +9,7 @@
 " --雑多--
 " {{{
 "
+let g:tex_conceal=''
 let g:python3_host_prog= "/usr/bin/python3"
 
 
@@ -24,6 +25,7 @@ set backspace=indent,eol,start
 set fileencoding=utf-8            " encoding
 set mouse=a                       " マウスモード
 set wrap                          " 折り返し
+set linebreak
 set ambiwidth=double
 set hlsearch                      " 検索結果をハイライト
 set incsearch                     " インクリメンタルサーチ
@@ -50,7 +52,6 @@ set write
 
 " conceal を無効化
 let g:markdown_syntax_conceal = 0
-let g:tex_conceal=''
 let g:haskell_conceal=0
 
 " Makefile ではインデントを空白にしない
@@ -83,6 +84,9 @@ if has('president_undo')
 endif
 
 let g:vimtex_view_general_viewer = 'evince'
+
+let g:previm_open_cmd = '/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
+let g:previm_wsl_mode = 1
 " }}}
 
 " --Keymaps--
@@ -194,8 +198,8 @@ let g:deoplete#enable_at_startup = 1
 " {{{
 syntax enable
 set termguicolors
-" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 let g:solarized_termcolors=256
 set background=light
 colorscheme solarized
@@ -218,7 +222,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 
 " For snippet_complete marker.
 if has('conceal')
-  set conceallevel=2 concealcursor=i
+  set conceallevel=0 concealcursor=i
 endif
 " }}}
 
@@ -367,4 +371,12 @@ endif
 " --supertab--
 " {{{
 let g:SuperTabDefaultCompletionType = "<c-n>"
+" }}}
+
+" --ML--
+" {{{
+augroup vimbettersml
+  au!
+  au FileType sml setlocal conceallevel=1
+augroup END
 " }}}
