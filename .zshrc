@@ -68,6 +68,7 @@ setopt hist_reduce_blanks
 # --alias--
 # {{{
 alias vim='nvim'
+alias sml='rlwrap sml'
 
 alias pbcopy='clip.exe'
 alias pbpaste='powershell.exe /c Get-Clipboard'
