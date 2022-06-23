@@ -377,6 +377,6 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 " {{{
 augroup vimbettersml
   au!
-  au FileType sml setlocal conceallevel=1
+  au FileType sml setlocal conceallevel=0
 augroup END
 " }}}
