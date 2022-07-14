@@ -14,7 +14,14 @@ export GOPATH=~/go
 export CARGO=~/.cargo
 export PATH=$PATH:$GOROOT/bin:$CARGO/bin:~/.local/bin:~/.local/lib
 # export DISPLAY=localhost:0.0 # WSL1
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0 # WSL2用
+
+if [ -n "$WSL_DISTRO_NAME" ]; then
+  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0 # WSL2用
+# elif [ "$(uname)" = "Darwin" ]; then
+# elif [ "$(uname)" = "Linux" ]; then
+# TODO:Ubuntuでのpbpaste/pbcopyの設定をここに書く!
+fi
+
 
 # --雑多--
 # {{{
