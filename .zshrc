@@ -139,6 +139,22 @@ alias aptautorm="sudo apt autoremove"
 alias aptup="sudo apt update"
 alias aptug="sudo apt upgrade"
 
+alias gitst="git status"
+alias gitfep="git fetch -p"
+alias gitbrd="git branch -d"
+alias gitbra="git branch -a"
+alias gitco="git checkout"
+alias gitcob="git checkout -b"
+alias gitcom="git commit"
+alias gitps="git push origin"
+alias gitpl="git pull"
+alias gitdf="git diff"
+
+# online-judge-tools
+alias ojt='oj test -c "python3 main.py"'
+
+alias coder="code -r"
+
 alias ヴぃm="vim"
 alias cむs="cmus"
 
@@ -191,3 +207,7 @@ zle -N zle-keymap-select
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
   zcompile ~/.zshrc
 fi
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
