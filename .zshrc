@@ -133,7 +133,7 @@ alias dnfupg="sudo dnf upgrade"
 alias dnfif="dnf info"
 
 alias aptin="sudo apt install"
-alias aptse="sudo apt search"
+alias aptse="apt search"
 alias aptrm="sudo apt remove"
 alias aptautorm="sudo apt autoremove"
 alias aptup="sudo apt update"
@@ -152,8 +152,6 @@ alias gitdf="git diff"
 
 # online-judge-tools
 alias ojt='oj test -c "python3 main.py"'
-
-alias coder="code -r"
 
 alias ヴぃm="vim"
 alias cむs="cmus"
