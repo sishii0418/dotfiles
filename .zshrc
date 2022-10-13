@@ -12,7 +12,7 @@ export XDG_CONFIG_HOME=~/.config
 export GOROOT=/usr/lib/go
 export GOPATH=~/go
 export CARGO=~/.cargo
-export PATH=$PATH:$GOROOT/bin:$CARGO/bin:~/.local/bin:~/.local/lib
+export PATH=$PATH:$GOROOT/bin:$CARGO/bin:~/.local/bin:~/.local/lib:~/.rbenv/bin
 # export DISPLAY=localhost:0.0 # WSL1
 
 if [ -n "$WSL_DISTRO_NAME" ]; then
@@ -209,3 +209,5 @@ fi
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(rbenv init - zsh)"
