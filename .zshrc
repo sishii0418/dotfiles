@@ -12,7 +12,7 @@ export XDG_CONFIG_HOME=~/.config
 export GOROOT=/usr/lib/go
 export GOPATH=~/go
 export CARGO=~/.cargo
-export PATH=$PATH:$GOROOT/bin:$CARGO/bin:~/.local/bin:~/.local/lib:~/.rbenv/bin
+export PATH=$PATH:$GOROOT/bin:$CARGO/bin:~/.local/bin:~/.local/lib:~/.rbenv/bin:/usr/local/bin/julia/bin
 # export DISPLAY=localhost:0.0 # WSL1
 
 if [ -n "$WSL_DISTRO_NAME" ]; then
