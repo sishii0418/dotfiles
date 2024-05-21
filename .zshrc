@@ -22,6 +22,12 @@ if [ -n "$WSL_DISTRO_NAME" ]; then
 # TODO:Ubuntuでのpbpaste/pbcopyの設定をここに書く!
 fi
 
+# --WSLで通知--
+function notify() {
+    "$@"
+    powershell.exe -File 'C:\Users\sanra\notify.ps1' -message "Command $@ completed"
+}
+
 
 # --雑多--
 # {{{
@@ -211,3 +217,4 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(rbenv init - zsh)"
+[ -f "/home/shunsuke/.ghcup/env" ] && source "/home/shunsuke/.ghcup/env" # ghcup-env
