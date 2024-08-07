@@ -15,12 +15,12 @@ export CARGO=~/.cargo
 export PATH=$PATH:$GOROOT/bin:$CARGO/bin:~/.local/bin:~/.local/lib:~/.rbenv/bin:/usr/local/bin/julia/bin
 # export DISPLAY=localhost:0.0 # WSL1
 
-if [ -n "$WSL_DISTRO_NAME" ]; then
-  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0 # WSL2用
+# if [ -n "$WSL_DISTRO_NAME" ]; then
+#   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0 # WSL2用
 # elif [ "$(uname)" = "Darwin" ]; then
 # elif [ "$(uname)" = "Linux" ]; then
 # TODO:Ubuntuでのpbpaste/pbcopyの設定をここに書く!
-fi
+# fi
 
 # --WSLで通知--
 function notify() {
@@ -85,6 +85,9 @@ alias sml='rlwrap -r -c sml'
 
 alias pbcopy='clip.exe'
 alias pbpaste='powershell.exe /c Get-Clipboard'
+
+alias stata='/usr/local/stata18/stata-se'
+alias xstata='/usr/local/stata18/xstata-se'
 
 alias -g ...='../..'
 alias -g ....='../../..'
