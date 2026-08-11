@@ -9,9 +9,8 @@
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 export XDG_CONFIG_HOME=~/.config
-export GOROOT=/usr/lib/go
-export GOPATH=~/go
 export CARGO=~/.cargo
+export GOROOT=/usr/local/go
 export PATH=$PATH:$GOROOT/bin:$CARGO/bin:~/.local/bin:~/.local/lib:~/.rbenv/bin:/usr/local/bin/julia/bin
 # export DISPLAY=localhost:0.0 # WSL1
 
@@ -221,3 +220,20 @@ export NVM_DIR="$HOME/.config/nvm"
 
 eval "$(rbenv init - zsh)"
 [ -f "/home/shunsuke/.ghcup/env" ] && source "/home/shunsuke/.ghcup/env" # ghcup-env
+
+# pnpm
+export PNPM_HOME="/home/shunsuke/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/shunsuke/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<

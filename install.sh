@@ -19,6 +19,7 @@ ln -si $HOME/dotfiles/.tmux.conf    $HOME/.tmux.conf
 ln -si $HOME/dotfiles/.Xresources   $HOME/.Xresources
 ln -si $HOME/dotfiles/.xinitrc      $HOME/.xinitrc
 ln -si $HOME/dotfiles/.latexmkrc    $HOME/.latexmkrc
+ln -si $HOME/dotfiles/.radian_profile    $HOME/.radian_profile
 
 # WSL2用
 ln -si $HOME/dotfiles/keymapsForVSCode.vim /mnt/c/Users/sanra/AppData/Roaming/Code/User/keymapsForVSCode.vim
