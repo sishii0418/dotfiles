@@ -11,8 +11,13 @@ export EDITOR=nvim
 export XDG_CONFIG_HOME=~/.config
 export CARGO=~/.cargo
 export GOROOT=/usr/local/go
-export PATH=$PATH:$GOROOT/bin:$CARGO/bin:~/.local/bin:~/.local/lib:~/.rbenv/bin:/usr/local/bin/julia/bin
+export PATH=$PATH:$GOROOT/bin:$CARGO/bin:~/.local/bin:~/.local/lib:~/.rbenv/bin:/usr/local/bin/julia/bin:/Users/shunsuke/.local/bin
 # export DISPLAY=localhost:0.0 # WSL1
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # if [ -n "$WSL_DISTRO_NAME" ]; then
 #   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0 # WSL2用
@@ -146,6 +151,12 @@ alias aptrm="sudo apt remove"
 alias aptautorm="sudo apt autoremove"
 alias aptup="sudo apt update"
 alias aptug="sudo apt upgrade"
+
+alias brewin="brew install"
+alias brewse="brew search"
+alias brewup="brew update"
+alias brewug="brew upgrade"
+alias brewunin="brew uninstall"
 
 alias gitst="git status"
 alias gitfep="git fetch -p"
