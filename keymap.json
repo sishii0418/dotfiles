@@ -1,0 +1,83 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      // q を無効化し、Q でマクロの記録開始・停止
+      "q": null,
+      "shift-q": "vim::ToggleRecord",
+
+      // 新しいファイルをタブで開く
+      "ctrl-t": "workspace::NewFile",
+
+      // 分割ペイン間の移動
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+
+      // 折り返された表示行単位で移動
+      "j": ["vim::Down", { "display_lines": true }],
+      "k": ["vim::Up", { "display_lines": true }],
+
+      // 下に空行を作り、ノーマルモードに戻る
+      "enter": ["workspace::SendKeystrokes", "o escape"],
+
+      // 対応する括弧へ
+      "tab": ["vim::Matching", { "match_quotes": true }],
+
+      // 検索などの状態をキャンセル
+      "f3": "editor::Cancel"
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual || vim_mode == operator) && !menu",
+    "bindings": {
+      // ; を : に
+      ";": ["workspace::SendKeystrokes", ":"],
+
+      // 行頭の最初の非空白文字・行末へ
+      "shift-h": "vim::FirstNonWhitespace",
+      "shift-l": "vim::EndOfLine"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !menu",
+    "bindings": {
+      "tab": ["vim::Matching", { "match_quotes": true }]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // jj で Esc、続けて右へ
+      "j j": ["workspace::SendKeystrokes", "escape right"],
+
+      // 挿入モード中のカーソル移動
+      "ctrl-h": "editor::MoveLeft",
+      "ctrl-j": "editor::MoveDown",
+      "ctrl-k": "editor::MoveUp",
+      "ctrl-l": "editor::MoveRight",
+      "ctrl-0": "editor::MoveToBeginningOfLine",
+      "ctrl-\\": "editor::MoveToEndOfLine"
+    }
+  }
+]
