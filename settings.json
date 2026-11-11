@@ -1,0 +1,73 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "tab_bar": {
+    "show_pinned_tabs_in_separate_row": true
+  },
+  "status_bar": {
+    "show_active_file": true
+  },
+  "on_last_window_closed": "quit_app",
+  "edit_predictions": {
+    "provider": "copilot"
+  },
+  "title_bar": {
+    "show_branch_status_icon": true,
+    "show_menus": true
+  },
+  "project_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "dock": "right",
+    "threads_sidebar": {
+      "position": "right"
+    },
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "disable_ai": false,
+  "vim": {
+    "use_system_clipboard": "on_yank"
+  },
+  "vim_mode": true,
+  "base_keymap": "VSCode",
+  "minimap": {
+    "show": "always"
+  },
+  "buffer_font_fallbacks": [
+    "Consolas",
+    "Courier New",
+    "monospace"
+  ],
+  "buffer_font_family": "Ricty",
+  "show_whitespaces": "boundary",
+  "line_ending": "prefer_lf",
+  "agent_servers": {
+    "codex-acp": {
+      "default_config_options": {
+        "mode": "read-only",
+        "collaboration_mode": "default"
+      },
+      "type": "registry"
+    }
+  },
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+}
