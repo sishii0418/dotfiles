@@ -26,11 +26,15 @@ eval "$(pyenv init -)"
 # TODO:Ubuntuでのpbpaste/pbcopyの設定をここに書く!
 # fi
 
-# --WSLで通知--
-function notify() {
-    "$@"
-    powershell.exe -File 'C:\Users\sanra\notify.ps1' -message "Command $@ completed"
-}
+if uname -r | grep -qi 'microsoft'; then
+    # --WSLで通知--
+    function notify() {
+        "$@"
+        powershell.exe -File 'C:\Users\sanra\notify.ps1' -message "Command $@ completed"
+    }
+    alias pbcopy='clip.exe'
+    alias pbpaste='powershell.exe /c Get-Clipboard'
+fi
 
 
 # --雑多--
@@ -87,8 +91,7 @@ setopt hist_reduce_blanks
 alias vim='nvim'
 alias sml='rlwrap -r -c sml'
 
-alias pbcopy='clip.exe'
-alias pbpaste='powershell.exe /c Get-Clipboard'
+alias venv='source .venv/bin/activate'
 
 alias stata='/usr/local/stata18/stata-se'
 alias xstata='/usr/local/stata18/xstata-se'
@@ -244,7 +247,9 @@ esac
 
 # !! Contents within this block are managed by juliaup !!
 
-path=('/home/shunsuke/.juliaup/bin' $path)
+path=("${HOME}/.juliaup/bin" $path)
 export PATH
+# Tab completion for juliaup and julia channel selection
+[ -f "${HOME}/.julia/juliaup/completions/zsh.zsh" ] && source "${HOME}/.julia/juliaup/completions/zsh.zsh"
 
 # <<< juliaup initialize <<<
